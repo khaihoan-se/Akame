@@ -6,7 +6,7 @@ import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 const Home: NextPage = (animeList) => {
    const intialState = animeList;
    const [datas, setDatas] = React.useState(intialState)
-   console.log(intialState);
+   console.log(datas);
    
    return (
       <div>
@@ -26,22 +26,164 @@ export const getStaticProps: GetStaticProps = async () => {
       cache: new InMemoryCache(),
    });
    const { data } = await client.query({
-      query: gql`
-         query ($id: Int) { # Define which variables will be used in the query (id)
-            Media (id: $id, type: ANIME) { # Insert our variables into the query arguments (id) (type: ANIME is hard-coded in the query)
-            id
-            title {
-               romaji
-               english
-               native
+      query: gql`query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+         Page(page: $page, perPage: $perPage) {
+            pageInfo {
+               total
+               currentPage
+               lastPage
+               hasNextPage
+               perPage
             }
+            media(type: ANIME, sort: TRENDING_DESC, id: $id, search: $search) {
+               id
+               idMal
+               title {
+                  romaji
+                  english
+                  native
+                  userPreferred
+               }
+               format
+               status
+               episodes
+               description
+               startDate {
+                  year
+                  month
+                  day
+               }
+               endDate {
+                  year
+                  month
+                  day
+               }
+               season
+               seasonYear
+               duration
+               countryOfOrigin
+               isLicensed
+               source
+               hashtag
+               trailer {
+                  id
+                  site
+                  thumbnail
+               }
+               updatedAt
+               coverImage {
+                  large
+                  medium
+                  extraLarge
+                  color
+               }
+               bannerImage
+               genres
+               synonyms
+               averageScore
+               meanScore
+               favourites
+               popularity
+               trending
+               tags {
+                  id
+                  name
+                  isMediaSpoiler
+               }
+               relations {
+                  nodes {
+                     id
+                     title {
+                        romaji
+                        english
+                        native
+                        userPreferred
+                     }
+                     type
+                  }
+               }
+               characters {
+                  nodes {
+                     id
+                     name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        userPreferred
+                     }
+                  }
+               }
+               staff {
+                  nodes {
+                     id
+                     name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        userPreferred
+                     }
+                  }
+               }
+               studios {
+                  nodes {
+                     id
+                     name 
+                     isAnimationStudio
+                  }
+               }
+               isFavourite
+               isAdult
+               isLocked
+               nextAiringEpisode {
+                  timeUntilAiring
+                  airingAt
+                  episode
+               }
+               airingSchedule {
+                  nodes {
+                     airingAt
+                     timeUntilAiring
+                     episode
+                  }
+               }
+               externalLinks {
+                  url
+                  site
+               }
+               streamingEpisodes {
+                  title
+                  thumbnail
+                  url
+                  site
+               }
+               siteUrl
+               isRecommendationBlocked
+               recommendations {
+                  nodes {
+                     mediaRecommendation {
+                        id 
+                        title {
+                           romaji
+                           english
+                           native
+                           userPreferred
+                        }
+                        type
+                     }
+                  }
+               }
             }
-         }`
+         } 
+     }`
    })
 
    return {
       props: {
-         animeList: data.Media
+         animeList: data
       }
    }
 }
