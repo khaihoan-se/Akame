@@ -1,7 +1,13 @@
-import type { NextPage } from 'next'
+import React from 'react'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 
-const Home: NextPage = () => {
+const Home: NextPage = (animeList) => {
+   const intialState = animeList;
+   const [datas, setDatas] = React.useState(intialState)
+   console.log(intialState);
+   
    return (
       <div>
          <Head>
@@ -12,6 +18,32 @@ const Home: NextPage = () => {
          <div><a href="#">Home Page || Akame AniApi!!</a></div>
       </div>
    )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+   const client = new ApolloClient({
+      uri: 'https://graphql.anilist.co',
+      cache: new InMemoryCache(),
+   });
+   const { data } = await client.query({
+      query: gql`
+         query ($id: Int) { # Define which variables will be used in the query (id)
+            Media (id: $id, type: ANIME) { # Insert our variables into the query arguments (id) (type: ANIME is hard-coded in the query)
+            id
+            title {
+               romaji
+               english
+               native
+            }
+            }
+         }`
+   })
+
+   return {
+      props: {
+         animeList: data.Media
+      }
+   }
 }
 
 export default Home
