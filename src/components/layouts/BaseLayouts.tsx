@@ -20,7 +20,7 @@ const BaseLayouts: React.FC<Props> = ({ children }) => {
 
     return isMobile ? <MobileLayout /> :  
     (
-        <main>
+        <main className="scroll-bar">
             <Header />
 
             <div className="app">{children}</div>
