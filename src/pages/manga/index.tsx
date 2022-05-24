@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
             media(
                search: $search
                type: $type
-               sort: TRENDING_DESC
+               sort: POPULARITY_DESC
             ) {
                description
                trailer {
