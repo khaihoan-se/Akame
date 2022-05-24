@@ -16,7 +16,7 @@ const MENU_LIST = [
 const Header: React.FC = () => {
     const router = useRouter();
     
-    const [ istop, setIstop ] = useState(false);
+    const [ istop, setIstop ] = useState<boolean>(false);
 
     const isActive = (url: string) => {
         if(router.pathname === url) return true
@@ -29,7 +29,11 @@ const Header: React.FC = () => {
         
         document.addEventListener('scroll', handleIsTop);
     }, [])
-
+    // useEffect(() => {
+    //     document.addEventListener('click', () => {
+    //         setOpenSearch(false)
+    //     })
+    // }, [])
     return (
         <header className={classNames(
             "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-500 bg-gradient-to-b from-black/80 via-black/60 to-transparent",
@@ -52,10 +56,7 @@ const Header: React.FC = () => {
             </ul>
             {/* tools */}
             <div className="flex items-center">
-                <Search classSearch={classNames(
-                    "mr-6",
-                    istop && "bg-background-800"
-                )} />
+                <Search classSearch={classNames("mr-6", istop && "bg-background-800")} />
                 <div>
                     <div className={classNames(
                         "p-2 flex items-center rounded-3xl bg-background-900 gap-x-1.5 mr-6 cursor-pointer",

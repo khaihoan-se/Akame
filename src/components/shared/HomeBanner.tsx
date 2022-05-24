@@ -16,7 +16,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import YouTube, { YouTubeProps } from "react-youtube";
 import { Anime, Manga } from "@/types";
-
+import PlainCard from "@/components/shared/PlainCard";
 interface HomeBannerProps<T> {
     data: T extends "anime" ? Anime[] : Manga[];
     type: T;
@@ -39,7 +39,7 @@ const HomeBanner = <T extends "anime" | "manga">({
   const [isMuted, setIsMuted] = useState(true);
   const isRanOnce = useRef(false);
 
-  const activeSlide = useMemo(() => data[index], [data, index]);
+  const activeSlide = data[index]
 
   const handleSlideChange: SwiperProps["onSlideChange"] = useCallback(
     (swiper: any) => {

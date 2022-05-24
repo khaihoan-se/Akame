@@ -1,8 +1,5 @@
 import React, { useRef } from "react";
-import {
-  Swiper as ReactSwiper,
-  SwiperSlide as ReactSwiperSlide,
-} from "swiper/react";
+import { Swiper as ReactSwiper, SwiperSlide as ReactSwiperSlide} from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import type SwiperClass from "swiper/types/swiper-class";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -20,6 +17,8 @@ export interface SwiperProps extends React.ComponentProps<typeof ReactSwiper> {
 }
 
 SwiperCore.use([Navigation]);
+
+export const SwiperSlide = ReactSwiperSlide;
 
 const Swiper: React.FC<SwiperProps> = ({
   children,
@@ -84,7 +83,7 @@ const Swiper: React.FC<SwiperProps> = ({
       {...props}
     >
       {children}
-
+      
       {!hideNavigation && (
         <div
           slot="container-end"
@@ -107,7 +106,5 @@ const Swiper: React.FC<SwiperProps> = ({
     </ReactSwiper>
   );
 };
-
-export const SwiperSlide = ReactSwiperSlide;
 
 export default Swiper;

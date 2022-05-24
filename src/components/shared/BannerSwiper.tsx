@@ -36,24 +36,24 @@ const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, ...props }) => {
       {data.map((anime: any) => (
         <SwiperSlide key={anime.id}>
           {({ isActive }) => (
-              <motion.div
-                variants={{
-                  enter: {
-                    opacity: 1,
-                    y: -40,
-                    speed: 300,
-                  },
-                  exit: {
-                    opacity: 0.2,
-                    y: 0,
-                  },
-                }}
-                className="w-full"
-                animate={isActive ? "enter" : "exit"}
-              >
-                <PlainCard src={anime.coverImage.extraLarge} />
-              </motion.div>
-            )}
+            <motion.div
+              variants={{
+                enter: {
+                  opacity: 1,
+                  y: -40,
+                  speed: 300,
+                },
+                exit: {
+                  opacity: 0.2,
+                  y: 0,
+                },
+              }}
+              className="w-full"
+              animate={isActive ? "enter" : "exit"}
+            >
+              <PlainCard src={anime.coverImage.extraLarge} />
+            </motion.div>
+          )}
         </SwiperSlide>
       ))}
     </Swiper>
