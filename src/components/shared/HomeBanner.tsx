@@ -34,7 +34,7 @@ const transition = [0.33, 1, 0.68, 1];
 
 const HomeBanner = <T extends "anime" | "manga">({
   data,
-  type,
+  type
 }: HomeBannerProps<T>) => {  
   const [index, setIndex] = useState<number>(0);
   const [showTrailer, setShowTrailer] = useState(false);
@@ -43,7 +43,7 @@ const HomeBanner = <T extends "anime" | "manga">({
   const [isMuted, setIsMuted] = useState(true);
   const isRanOnce = useRef(false);
 
-  const activeSlide = data[index]
+  const activeSlide = useMemo(() => data[index], [data, index]);
 
   const handleSlideChange: SwiperProps["onSlideChange"] = useCallback(
     (swiper: any) => {
@@ -90,7 +90,7 @@ const HomeBanner = <T extends "anime" | "manga">({
               exit="exit"
               initial="initial"
               className="w-full h-0"
-              key={activeSlide.bannerImage}
+              key={activeSlide.title.english}
             >
               <Image
                 src={activeSlide.bannerImage}
