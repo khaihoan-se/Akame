@@ -31,7 +31,7 @@ const Header: React.FC = () => {
     }, [])
     return (
         <header className={classNames(
-            "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-500 bg-gradient-to-b from-black/80 via-black/60 to-transparent",
+            "px-4 md:px-12 flex items-center h-16 fixed top w-full z-40 transition duration-500 bg-gradient-to-b from-black/80 via-black/60 to-transparent",
             istop && "bg-background"
         )}>
             {/* Logo */}
