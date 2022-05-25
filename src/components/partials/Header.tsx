@@ -62,7 +62,7 @@ const Header: React.FC = () => {
                         <span className="text-base text-white">English</span>
                     </div>
                 </div>
-                <Button title="Đăng nhập" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
+                <Button title="Login" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
             </div>
         </header>
     )

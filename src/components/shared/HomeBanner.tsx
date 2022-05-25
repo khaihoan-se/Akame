@@ -2,7 +2,7 @@ import BannerSwiper from "@/components/shared/BannerSwiper";
 import CircleButton from "@/components/shared/CircleButton";
 import DotList from "@/components/shared/DotList";
 import Image from "@/components/shared/Image";
-import Swiper, { SwiperProps, SwiperSlide } from "@/components/shared/Swiper";
+import { SwiperProps } from "@/components/shared/Swiper";
 import TextIcon from "@/components/shared/TextIcon";
 import { Anime, Manga } from "@/types";
 import classNames from "classnames";
@@ -18,7 +18,7 @@ import React, {
 import { AiFillHeart, AiFillPlayCircle } from "react-icons/ai";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import { MdTagFaces } from "react-icons/md";
-import YouTube, { YouTubeProps } from "react-youtube";
+import YouTube from "react-youtube";
 import Description from "./Description";
 interface HomeBannerProps<T> {
     data: T extends "anime" ? Anime[] : Manga[];
@@ -157,7 +157,7 @@ const HomeBanner = <T extends "anime" | "manga">({
           transition={{ ease: transition, duration: 1 }}
         >
           <h1 className="text-2xl font-bold uppercase md:text-4xl line-clamp-2 sm:line-clamp-3 md:line-clamp-4">
-            {activeSlide.title.native}
+            {activeSlide.title.english}
           </h1>
           <div className="flex flex-wrap items-center mt-4 text-lg gap-x-8">
             {activeSlide.averageScore && (
