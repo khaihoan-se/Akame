@@ -1,7 +1,10 @@
 import BannerSwiper from "@/components/shared/BannerSwiper";
 import CircleButton from "@/components/shared/CircleButton";
+import DotList from "@/components/shared/DotList";
 import Image from "@/components/shared/Image";
 import Swiper, { SwiperProps, SwiperSlide } from "@/components/shared/Swiper";
+import TextIcon from "@/components/shared/TextIcon";
+import { Anime, Manga } from "@/types";
 import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -12,11 +15,11 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { AiFillPlayCircle } from "react-icons/ai";
+import { AiFillHeart, AiFillPlayCircle } from "react-icons/ai";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
+import { MdTagFaces } from "react-icons/md";
 import YouTube, { YouTubeProps } from "react-youtube";
-import { Anime, Manga } from "@/types";
-import PlainCard from "@/components/shared/PlainCard";
+import Description from "./Description";
 interface HomeBannerProps<T> {
     data: T extends "anime" ? Anime[] : Manga[];
     type: T;
@@ -155,6 +158,28 @@ const HomeBanner = <T extends "anime" | "manga">({
           <h1 className="text-2xl font-bold uppercase md:text-4xl line-clamp-2 sm:line-clamp-3 md:line-clamp-4">
             {activeSlide.title.native}
           </h1>
+          <div className="flex flex-wrap items-center mt-4 text-lg gap-x-8">
+            {activeSlide.averageScore && (
+              <TextIcon LeftIcon={MdTagFaces} iconClassName="text-green-300">
+                <p>{activeSlide.averageScore}%</p>
+              </TextIcon>
+            )}
+
+            <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
+              <p>{activeSlide.favourites}</p>
+            </TextIcon>
+
+            <DotList>
+              {activeSlide.genres.map((genre) => (
+                <span key={genre}>{genre}</span>
+              ))}
+            </DotList>
+          </div>
+
+          <Description
+            description={activeSlide.description}
+            className="hidden mt-2 text-base md:block text-gray-200 md:line-clamp-5"
+          />
         </motion.div>
         <Link href={getRedirectUrl(activeSlide.id)}>
           <a>

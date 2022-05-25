@@ -189,7 +189,7 @@ export interface Media<T extends Anime | Manga> {
   isAdult: boolean;
   synonyms: string[];
   averageScore: number;
-  description: MediaDescription;
+  description: string;
   updated_at?: string;
   created_at?: string;
 }
