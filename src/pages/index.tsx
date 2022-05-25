@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import type { GetServerSideProps, NextPage } from 'next'
 import { Anime } from '@/types'
-import { getSeason } from '@/utils'
+import { getNextSeason, getSeason } from '@/utils'
 import Head from '@/components/shared/Head'
 import HomeBanner from '@/components/shared/HomeBanner'
 import AnimeApi from '@/api/AnilistApi'
@@ -25,6 +25,7 @@ const Home: NextPage<HomaPage> = ({
    animeNextSeason
 }) => {
    const currentSeason = useMemo(getSeason, []);
+   const nextSeason = useMemo(getNextSeason, [])
    return (
       <React.Fragment>
 
@@ -57,7 +58,7 @@ const Home: NextPage<HomaPage> = ({
                      title="ANIME NEXT SEASON"
                      type="anime"
                      data={animeNextSeason}
-                     viewMoreHref="browse?type=anime&season=SUMMER&seasonYear=2022&sort=popularity"
+                     viewMoreHref={`browse?type=anime&season=${nextSeason.season}&seasonYear=${nextSeason.year}&sort=popularity`}
                   />
                </Section>
             </div>
@@ -68,7 +69,8 @@ const Home: NextPage<HomaPage> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-   const currentSeason = getSeason()
+   const currentSeason = getSeason();
+   const nextSeason = getNextSeason();
    const { data: trendingAnime } = await AnimeApi.getAnime({
       type: 'ANIME',
       perPage: 15,
@@ -94,7 +96,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
    const { data: animeNextSeason } = await AnimeApi.getAnime({
       type: 'ANIME',
       sort: 'POPULARITY_DESC',
-      season: 'SUMMER',
+      season: nextSeason.season,
       seasonYear: 2022,
       perPage: 5,
    })
