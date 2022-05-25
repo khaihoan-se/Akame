@@ -27,6 +27,7 @@ const bannerVariants = {
   animate: { opacity: 1 },
   exit: { opacity: 0 },
 };
+const transition = [0.33, 1, 0.68, 1];
 
 const HomeBanner = <T extends "anime" | "manga">({
   data,
@@ -143,6 +144,18 @@ const HomeBanner = <T extends "anime" | "manga">({
 
         <div className="absolute inset-0 flex flex-col justify-center px-4 banner__overlay md:px-12"></div>
 
+        <motion.div
+          variants={bannerVariants}
+          animate="animate"
+          initial="initial"
+          key={activeSlide.title.english}
+          className="absolute left-12 top-1/2 -translate-y-1/2 w-full md:w-[45%]"
+          transition={{ ease: transition, duration: 1 }}
+        >
+          <h1 className="text-2xl font-bold uppercase md:text-4xl line-clamp-2 sm:line-clamp-3 md:line-clamp-4">
+            {activeSlide.title.native}
+          </h1>
+        </motion.div>
         <Link href={getRedirectUrl(activeSlide.id)}>
           <a>
             <CircleButton
