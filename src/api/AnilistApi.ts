@@ -1,6 +1,11 @@
-import axiosClient from "./axiosClient"
+import axiosClient from "./axiosClient";
+
+interface VariablesType {
+   [key: string]: any;
+}
+
 const query = `query ($page: Int, $perPage: Int, $seasonYear: Int, $type: MediaType, $season: MediaSeason, $sort: [MediaSort]) {
-   Page(page: $page, perPage: $perPage) {
+   Page( page: $page, perPage: $perPage ) {
       pageInfo {
          total
          currentPage
@@ -8,7 +13,7 @@ const query = `query ($page: Int, $perPage: Int, $seasonYear: Int, $type: MediaT
          hasNextPage
          perPage
       }
-      media(type: $type, sort: $sort, season: $season, seasonYear: $seasonYear) {
+      media( type: $type, sort: $sort, season: $season, seasonYear: $seasonYear ) {
          description
          trailer {
             id
@@ -157,15 +162,17 @@ const query = `query ($page: Int, $perPage: Int, $seasonYear: Int, $type: MediaT
    }
 }
 `;
+
 const AnimeApi = {
-    getAnime: (variables: any) => {
-        return axiosClient.request({
-            method: 'POST',
-            data: {
-                query: query,
-                variables: variables
-            }
-        })
-    }
+   getAnime: (variables: VariablesType) => {
+      return axiosClient.request({
+         method: 'POST',
+         data: {
+            query: query,
+            variables: variables
+         }
+      })
+   }
 }
+
 export default AnimeApi;

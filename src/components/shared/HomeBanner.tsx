@@ -30,6 +30,7 @@ const bannerVariants = {
   animate: { opacity: 1 },
   exit: { opacity: 0 },
 };
+
 const transition = [0.33, 1, 0.68, 1];
 
 const HomeBanner = <T extends "anime" | "manga">({

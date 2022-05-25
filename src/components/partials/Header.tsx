@@ -13,6 +13,7 @@ const MENU_LIST = [
     { title: 'Manga', path: '/manga' },
     { title: 'Developer', path: '/developer' }
 ]
+
 const Header: React.FC = () => {
     const router = useRouter();
     
@@ -58,7 +59,7 @@ const Header: React.FC = () => {
                         istop && "bg-background-800"
                     )}>
                         <RiGlobalLine className="w-6 h-6" />
-                        <span className="text-base text-white">Tiếng Việt</span>
+                        <span className="text-base text-white">English</span>
                     </div>
                 </div>
                 <Button title="Đăng nhập" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />

@@ -3,11 +3,12 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import HomeBanner from '@/components/shared/HomeBanner'
 import { Anime } from '@/types'
-import AnimeApi from '@/api/getAnime'
+import AnimeApi from '@/api/AnilistApi'
 
 interface HomaPage {
    trendingManga: Anime[];
 }
+
 const Manga: NextPage<HomaPage> = ({
    trendingManga
 }) => {

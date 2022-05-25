@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://graphql.anilist.co';
+export const ANILIST_URL = 'https://graphql.anilist.co';

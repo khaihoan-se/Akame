@@ -3,11 +3,12 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import HomeBanner from '@/components/shared/HomeBanner'
 import { Anime } from '@/types'
-import AnimeApi from '@/api/getAnime'
+import AnimeApi from '@/api/AnilistApi'
 
 interface HomaPage {
    trendingAnime: Anime[];
 }
+
 const Home: NextPage<HomaPage> = ({
    trendingAnime
 }) => {
@@ -19,6 +20,7 @@ const Home: NextPage<HomaPage> = ({
             <link rel="icon" href="/logo.jpeg" />
          </Head>
          <HomeBanner type='anime' data={trendingAnime} />
+         <div>Home Components Search</div>
       </div>
    )
 }
