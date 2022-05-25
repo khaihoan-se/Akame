@@ -13,7 +13,7 @@ const Head: React.FC<HeadProps> = (props) => {
   const {
     title = "Akame",
     description = "Website search anime sử dụng Api từ Anilist.",
-    image = "blob:https://vercel.com/0f6854cc-ab3a-4737-905c-fb54665a5b3a",
+    image = "https://res.cloudinary.com/figdom/image/upload/v1653502883/anime/Untitled_g7gczx.png",
   } = props;
 
   const { asPath } = useRouter();

@@ -22,9 +22,12 @@ const Home: NextPage<HomaPage> = ({
 
          <ClientOnly>
             <HomeBanner type='anime' data={trendingAnime} />
-            <div className="space-y-8">Home Components Search</div>
+
+            <div className="space-y-8">
+               Home Secction
+            </div>
          </ClientOnly>
-         
+
       </React.Fragment>
    )
 }
