@@ -1,3 +1,4 @@
+// tsconfig.json is a json file that contains the compiler options.
 {
   "compilerOptions": {
     "target": "es5",
