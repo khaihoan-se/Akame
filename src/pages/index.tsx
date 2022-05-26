@@ -73,6 +73,8 @@ const Home: NextPage<HomaPage> = ({
                   data={ratingAnime}
                   viewMoreHref='/browse?sort=score&type=anime'
                />
+
+               <Section>Lịch phát sóng</Section>
             </div>
          </ClientOnly>
 
