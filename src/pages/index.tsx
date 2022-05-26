@@ -8,13 +8,15 @@ import AnimeApi from '@/api/AnilistApi'
 import ClientOnly from '@/components/shared/ClientOnly'
 import Section from '@/components/shared/Section'
 import ColumnSection from '@/components/shared/ColumnSection'
+import Rantings from '@/components/shared/Rantings'
 
 interface HomaPage {
    trendingAnime: Anime[];
    popularSeason: Anime[];
    popularAllTime: Anime[];
    favouriteAllTime: Anime[];
-   animeNextSeason: Anime[]
+   animeNextSeason: Anime[];
+   ratingAnime: Anime[];
 }
 
 const Home: NextPage<HomaPage> = ({
@@ -22,7 +24,8 @@ const Home: NextPage<HomaPage> = ({
    popularSeason,
    popularAllTime,
    favouriteAllTime,
-   animeNextSeason
+   animeNextSeason,
+   ratingAnime
 }) => {
    const currentSeason = useMemo(getSeason, []);
    const nextSeason = useMemo(getNextSeason, [])
@@ -63,7 +66,13 @@ const Home: NextPage<HomaPage> = ({
                      viewMoreHref={`browse?type=anime&season=${nextSeason.season}&seasonYear=${nextSeason.year}&sort=popularity`}
                   />
                </Section>
-               <Section>Bảng xếp hạng</Section>
+
+               <Rantings 
+                  title='Top 50 Anime'
+                  type='anime'
+                  data={ratingAnime}
+                  viewMoreHref='/browse?sort=score&type=anime'
+               />
             </div>
          </ClientOnly>
 
@@ -103,13 +112,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
       seasonYear: 2022,
       perPage: 5,
    })
+   const { data: ratingAnime } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      // perPage: 15,
+      sort: 'SCORE_DESC',
+   })
    return {
       props: {
          trendingAnime: trendingAnime.Page.media,
          popularSeason: popularSeason.Page.media,
          popularAllTime: popularAllTime.Page.media,
          favouriteAllTime: favouriteAllTime.Page.media,
-         animeNextSeason: animeNextSeason.Page.media
+         animeNextSeason: animeNextSeason.Page.media,
+         ratingAnime: ratingAnime.Page.media
       }
    }
 }
