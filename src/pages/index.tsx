@@ -40,6 +40,7 @@ const Home: NextPage<HomaPage> = ({
             <HomeBanner type='anime' data={trendingAnime} />
 
             <div className="space-y-8">
+               
                <Section className="flex flex-col md:flex-row items-center md:space-between space-y-4 space-x-0 md:space-y-0 md:space-x-4">
                   <ColumnSection
                      title="POPULAR THIS SEASON"
@@ -74,7 +75,6 @@ const Home: NextPage<HomaPage> = ({
                   viewMoreHref='/browse?sort=score&type=anime'
                />
 
-               <Section>Lịch phát sóng</Section>
             </div>
          </ClientOnly>
 
