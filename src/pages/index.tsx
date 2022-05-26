@@ -68,7 +68,7 @@ const Home: NextPage<HomaPage> = ({
                </Section>
 
                <Rantings 
-                  title='Top 10 Anime'
+                  title='Top 20 Anime'
                   type='anime'
                   data={ratingAnime}
                   viewMoreHref='/browse?sort=score&type=anime'

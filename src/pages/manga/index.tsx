@@ -7,17 +7,20 @@ import AnimeApi from '@/api/AnilistApi'
 import ClientOnly from '@/components/shared/ClientOnly'
 import Section from '@/components/shared/Section'
 import ColumnSection from '@/components/shared/ColumnSection'
+import Rantings from '@/components/shared/Rantings'
 
 interface HomaPage {
    trendingManga: Manga[];
    popularAllTime: Manga[];
    favouriteAllTime: Manga[];
+   ratingManga: Manga[];
 }
 
 const Manga: NextPage<HomaPage> = ({
    trendingManga,
    popularAllTime,
-   favouriteAllTime
+   favouriteAllTime,
+   ratingManga
 }) => {
    return (
       <div>
@@ -28,7 +31,7 @@ const Manga: NextPage<HomaPage> = ({
          <ClientOnly>
             <HomeBanner type='manga' data={trendingManga} />
 
-            <div className='scale-y-8'>
+            <div className="space-y-8">
                <Section className="flex flex-col md:flex-row items-center md:space-between space-y-4 space-x-0 md:space-y-0 md:space-x-4">
                   <ColumnSection
                      title='ALL TIME POPULAR'
@@ -43,6 +46,13 @@ const Manga: NextPage<HomaPage> = ({
                      viewMoreHref='browse?sort=favourites&type=manga'
                   />
                </Section>
+
+               <Rantings 
+                  title='Top 20 Manga'
+                  type='manga'
+                  data={ratingManga}
+                  viewMoreHref='/browse?sort=score&type=manga'
+               />
             </div>
          </ClientOnly>
       </div>
@@ -65,11 +75,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
       perPage: 5,
       sort: 'FAVOURITES_DESC'
    })
+   const { data: ratingManga } = await AnimeApi.getAnime({
+      type: 'MANGA',
+      perPage: 20,
+      sort: 'SCORE_DESC',
+   })
    return {
       props: {
          trendingManga: trendingManga.Page.media,
          popularAllTime: popularAllTime.Page.media,
-         favouriteAllTime: favouriteAllTime.Page.media
+         favouriteAllTime: favouriteAllTime.Page.media,
+         ratingManga: ratingManga.Page.media
       }
    }
 }
