@@ -67,12 +67,12 @@ const Home: NextPage<HomaPage> = ({
                   />
                </Section>
 
-               <Rantings 
+               {/* <Rantings 
                   title='Top 50 Anime'
                   type='anime'
                   data={ratingAnime}
                   viewMoreHref='/browse?sort=score&type=anime'
-               />
+               /> */}
 
                <Section>Lịch phát sóng</Section>
             </div>
