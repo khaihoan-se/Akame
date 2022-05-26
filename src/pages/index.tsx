@@ -16,7 +16,7 @@ interface HomaPage {
    popularAllTime: Anime[];
    favouriteAllTime: Anime[];
    animeNextSeason: Anime[];
-   // ratingAnime: Anime[];
+   ratingAnime: Anime[];
 }
 
 const Home: NextPage<HomaPage> = ({
@@ -25,7 +25,7 @@ const Home: NextPage<HomaPage> = ({
    popularAllTime,
    favouriteAllTime,
    animeNextSeason,
-   // ratingAnime
+   ratingAnime
 }) => {
    const currentSeason = useMemo(getSeason, []);
    const nextSeason = useMemo(getNextSeason, [])
@@ -67,12 +67,12 @@ const Home: NextPage<HomaPage> = ({
                   />
                </Section>
 
-               {/* <Rantings 
-                  title='Top 50 Anime'
+               <Rantings 
+                  title='Top 10 Anime'
                   type='anime'
                   data={ratingAnime}
                   viewMoreHref='/browse?sort=score&type=anime'
-               /> */}
+               />
 
                <Section>Lịch phát sóng</Section>
             </div>
@@ -114,11 +114,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
       seasonYear: 2022,
       perPage: 5,
    })
-   // const { data: ratingAnime } = await AnimeApi.getAnime({
-   //    type: 'ANIME',
-   //    // perPage: 15,
-   //    sort: 'SCORE_DESC',
-   // })
+   const { data: ratingAnime } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      perPage: 10,
+      sort: 'SCORE_DESC',
+   })
    return {
       props: {
          trendingAnime: trendingAnime.Page.media,
@@ -126,7 +126,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
          popularAllTime: popularAllTime.Page.media,
          favouriteAllTime: favouriteAllTime.Page.media,
          animeNextSeason: animeNextSeason.Page.media,
-         // ratingAnime: ratingAnime.Page.media
+         ratingAnime: ratingAnime.Page.media
       }
    }
 }
