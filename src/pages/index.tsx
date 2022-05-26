@@ -29,7 +29,9 @@ const Home: NextPage<HomaPage> = ({
    return (
       <React.Fragment>
 
-         <Head />
+         <Head
+            title="Akame - Anime"
+         />
 
          <ClientOnly>
             <HomeBanner type='anime' data={trendingAnime} />
@@ -61,6 +63,7 @@ const Home: NextPage<HomaPage> = ({
                      viewMoreHref={`browse?type=anime&season=${nextSeason.season}&seasonYear=${nextSeason.year}&sort=popularity`}
                   />
                </Section>
+               <Section>Bảng xếp hạng</Section>
             </div>
          </ClientOnly>
 

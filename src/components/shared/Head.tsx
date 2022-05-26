@@ -11,8 +11,8 @@ interface HeadProps {
 
 const Head: React.FC<HeadProps> = (props) => {
   const {
-    title = "Akame",
-    description = "Website search anime sử dụng Api từ Anilist.",
+    title,
+    description = "Akame là một website cho phép bạn tìm kiếm thông tin của các bộ anime",
     image = "https://res.cloudinary.com/figdom/image/upload/v1653502883/anime/Untitled_g7gczx.png",
   } = props;
 
