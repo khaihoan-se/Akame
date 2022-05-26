@@ -10,7 +10,6 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.red,
-
         background: {
           DEFAULT: "#000000",
           200: "#666666",
@@ -29,7 +28,6 @@ module.exports = {
       },
     },
   },
-
   plugins: [
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),
