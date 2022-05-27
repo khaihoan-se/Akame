@@ -59,7 +59,6 @@ const Card = <T extends "anime" | "manga">(props: AnimeCardProps<T>) => {
       ? `/anime/details/${data.id}`
       : `/manga/details/${data.id}`,
   } = props;
-
   const primaryColor = useMemo(
     () =>
       data.coverImage?.color && isColorVisible(data.coverImage.color, "#3a3939")
@@ -67,6 +66,7 @@ const Card = <T extends "anime" | "manga">(props: AnimeCardProps<T>) => {
         : "white",
     [data]
   );
+console.log('data',data);
 
   return (
     <Link href={redirectUrl}>

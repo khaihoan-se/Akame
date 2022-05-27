@@ -15,6 +15,10 @@ import Link from "next/link";
 import dayjs from "@/lib/dayjs";
 import DotList from "@/components/shared/DotList";
 import MediaDescription from "@/components/shared/MediaDescription";
+import DetailsSection from "@/components/shared/DetailsSection";
+import CharacterConnectionCard from "@/components/shared/CharacterConnectionCard";
+import Card from "@/components/shared/Card";
+import List from "@/components/shared/List";
 
 
 const bannerVariants = {
@@ -28,9 +32,7 @@ interface DetailsProps {
 const DetailsPage: React.FC<DetailsProps> = ({
   animeDetail
 }) => {
-  const data = animeDetail[0]
-  console.log(data);
-  
+  const data = animeDetail[0]  
   const title = data?.title.english
   const description = data?.description
 
@@ -274,7 +276,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
               />
             </div>
 
-            {/* <div className="space-y-2 text-gray-400">
+            <div className="space-y-2 text-gray-400">
               <h1 className="font-semibold">Tags</h1>
 
               <ul className="space-y-2">
@@ -288,34 +290,21 @@ const DetailsPage: React.FC<DetailsProps> = ({
                   >
                     <a className="block">
                       <li className="p-2 rounded-md bg-background-900 hover:text-primary-300 transition duration-300">
-                        {tag}
+                        {tag.name}
                       </li>
                     </a>
                   </Link>
                 ))}
               </ul>
-            </div> */}
+            </div>
           </div>
-          {/* <div className="space-y-12 md:col-span-8">
-            <DetailsSection
-              title={t("episodes_section")}
-              className="overflow-hidden"
-            >
-              {isLoading ? (
-                <div className="h-full w-full flex items-center justify-center">
-                  <Spinner />
-                </div>
-              ) : (
-                <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
-              )}
-            </DetailsSection>
-
-            {!!anime?.characters?.length && (
+          <div className="space-y-12 md:col-span-8">
+            {!!data?.characters?.edges.length && (
               <DetailsSection
-                title={t("characters_section")}
+                title="Characters"
                 className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
               >
-                {anime.characters.map((character, index) => (
+                {data.characters.edges.map((character, index) => (
                   <CharacterConnectionCard
                     characterConnection={character}
                     key={index}
@@ -325,30 +314,26 @@ const DetailsPage: React.FC<DetailsProps> = ({
               </DetailsSection>
             )}
 
-            {!!anime?.relations?.length && (
+            {/* {!!data?.relations?.length && (
               <DetailsSection title={t("relations_section")}>
                 <List data={anime.relations.map((relation) => relation.media)}>
                   {(anime) => <Card type="anime" data={anime} />}
                 </List>
               </DetailsSection>
-            )}
+            )} */}
 
-            {!!anime?.recommendations?.length && (
-              <DetailsSection title={t("recommendations_section")}>
+            {!!data?.recommendations?.nodes.length && (
+              <DetailsSection title="Recommendations">
                 <List
-                  data={anime.recommendations.map(
-                    (recommendation) => recommendation.media
+                  data={data.recommendations.nodes.map(
+                    (recommendation) => recommendation.mediaRecommendation
                   )}
                 >
-                  {(anime) => <Card type="anime" data={anime} />}
+                  {(data: any) => <Card type="anime" data={data} />}
                 </List>
               </DetailsSection>
             )}
-
-            <DetailsSection title={t("comments_section")}>
-              <CommentsSection anime_id={anime.id} />
-            </DetailsSection>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

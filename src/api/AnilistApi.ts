@@ -141,10 +141,34 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $ty
          }
          recommendations(sort: RATING_DESC) {
             nodes {
-            mediaRecommendation {
-               id
-               type
-            }
+               mediaRecommendation {
+                  id
+                  averageScore
+                  bannerImage
+                  countryOfOrigin
+                  coverImage {
+                     color
+                     medium
+                     large
+                     extraLarge
+                  }
+                  description
+                  duration
+                  favourites
+                  format
+                  genres
+                  isAdult
+                  popularity
+                  season
+                  seasonYear
+                  status
+                  title {
+                  english
+                  native
+                  romaji
+                  userPreferred
+                  }
+               }
             }
          }
          airingSchedule(notYetAired: true) {

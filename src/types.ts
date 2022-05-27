@@ -103,8 +103,12 @@ export type AiringScheduleNode = {
   media?: Anime;
 }
 export type Recommendation<T extends Anime | Manga> = {
-  media: T;
+  nodes: RecommendationNode<T>[];
 };
+
+export type RecommendationNode<T extends Anime | Manga> = {
+  mediaRecommendation: T
+}
 
 export type Relation<T extends Anime | Manga> = {
   media: T;
@@ -128,6 +132,9 @@ export type CharacterName = {
 };
 
 export type CharacterConnection<T extends Anime | Manga> = {
+  edges: CharacterEdge<T>[];
+};
+export type CharacterEdge<T extends Anime | Manga> = {
   characterId: number;
   id: number;
   role: CharacterRole;
@@ -135,8 +142,8 @@ export type CharacterConnection<T extends Anime | Manga> = {
   mediaId: number;
   media?: T;
   character: Character;
-};
-
+  node: any;
+}
 export type Character = {
   id: number;
   name: CharacterName;
@@ -182,10 +189,10 @@ export interface Media<T extends Anime | Manga> {
   bannerImage: string;
   format: MediaFormat;
   status: MediaStatus;
-  characters: CharacterConnection<T>[];
+  characters: CharacterConnection<T>;
   relations: Relation<T>[];
-  recommendations: Recommendation<T>[];
-  tags: string[];
+  recommendations: Recommendation<T>;
+  tags: any[];
   genres: string[];
   countryOfOrigin: string;
   isAdult: boolean;
