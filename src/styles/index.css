@@ -55,7 +55,7 @@ li {
   background-image: linear-gradient(
     to left,
     transparent 10%,
-    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 1)
   );
 }

@@ -93,13 +93,15 @@ export type VoiceActor = {
 };
 
 export type AiringSchedule = {
+  nodes: AiringScheduleNode[];
+};
+export type AiringScheduleNode = {
   id: number;
   airingAt: number;
   episode: number;
   mediaId: number;
   media?: Anime;
-};
-
+}
 export type Recommendation<T extends Anime | Manga> = {
   media: T;
 };
@@ -201,7 +203,7 @@ export interface Anime extends Media<Anime> {
   totalEpisodes: number;
   studios: StudioConnection[];
   voiceActors: VoiceActorConnection[];
-  airingSchedules: AiringSchedule[];
+  airingSchedule: AiringSchedule;
   episodeUpdatedAt: string;
   duration: number;
   trailer?: Trailer;

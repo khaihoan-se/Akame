@@ -4,7 +4,7 @@ interface VariablesType {
    [key: string]: any;
 }
 
-const query = `query ($page: Int, $perPage: Int, $seasonYear: Int, $type: MediaType, $season: MediaSeason, $sort: [MediaSort]) {
+const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $type: MediaType, $season: MediaSeason, $sort: [MediaSort]) {
    Page( page: $page, perPage: $perPage ) {
       pageInfo {
          total
@@ -13,7 +13,7 @@ const query = `query ($page: Int, $perPage: Int, $seasonYear: Int, $type: MediaT
          hasNextPage
          perPage
       }
-      media( type: $type, sort: $sort, season: $season, seasonYear: $seasonYear ) {
+      media( type: $type, sort: $sort, season: $season, seasonYear: $seasonYear, id: $id ) {
          description
          trailer {
             id
@@ -149,10 +149,10 @@ const query = `query ($page: Int, $perPage: Int, $seasonYear: Int, $type: MediaT
          }
          airingSchedule(notYetAired: true) {
             nodes {
-            airingAt
-            episode
-            mediaId
-            id
+               airingAt
+               episode
+               mediaId
+               id
             }
          }
          tags {

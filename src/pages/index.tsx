@@ -25,7 +25,7 @@ const Home: NextPage<HomaPage> = ({
    popularAllTime,
    favouriteAllTime,
    animeNextSeason,
-   ratingAnime
+   ratingAnime,
 }) => {
    const currentSeason = useMemo(getSeason, []);
    const nextSeason = useMemo(getNextSeason, [])
@@ -126,7 +126,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
          popularAllTime: popularAllTime.Page.media,
          favouriteAllTime: favouriteAllTime.Page.media,
          animeNextSeason: animeNextSeason.Page.media,
-         ratingAnime: ratingAnime.Page.media
+         ratingAnime: ratingAnime.Page.media,
       }
    }
 }
