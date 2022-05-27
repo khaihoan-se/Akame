@@ -19,6 +19,8 @@ import DetailsSection from "@/components/shared/DetailsSection";
 import CharacterConnectionCard from "@/components/shared/CharacterConnectionCard";
 import Card from "@/components/shared/Card";
 import List from "@/components/shared/List";
+import CircleButton from "@/components/shared/CircleButton";
+import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 
 
 const bannerVariants = {
@@ -35,7 +37,9 @@ const DetailsPage: React.FC<DetailsProps> = ({
   const data = animeDetail[0]  
   const title = data?.title.english
   const description = data?.description
-
+  console.log('====================================');
+  console.log(data);
+  console.log('====================================');
   const nextAiringSchedule = useMemo(
     () =>
       data?.airingSchedule.nodes
@@ -153,6 +157,15 @@ const DetailsPage: React.FC<DetailsProps> = ({
             }
           </AnimatePresence>
           <div className="absolute inset-0 flex flex-col justify-center px-4 banner__overlay md:px-12"></div>
+          {showTrailer && player && (
+          <CircleButton
+            LeftIcon={isMuted ? BsFillVolumeMuteFill : BsFillVolumeUpFill}
+            outline
+            className="absolute bottom-16 right-12"
+            iconClassName="w-6 h-6"
+            onClick={isMuted ? unMute : mute}
+          />
+        )}
         </div>
         {/* D */}
         <div className="relative px-4 pb-4 sm:px-12 bg-background-900">
@@ -235,9 +248,40 @@ const DetailsPage: React.FC<DetailsProps> = ({
                 title="Format"
                 value={data.format}
               />
-              <InfoItem title="English" value={data.title.english} />
-              <InfoItem title="Native" value={data.title.native} />
-              <InfoItem title="Romanji" value={data.title.romaji} />
+              <InfoItem
+                title="Episodes"
+                value={data.episodes}
+              />
+              <InfoItem
+                title="Episode Duration"
+                value={`${data.episodes} mins`}
+              />
+              <InfoItem
+                title="Status"
+                value={data.status}
+              />
+              <InfoItem
+                title="Start Date"
+                value={`${data.startDate.day != null ? data.startDate.day : '?'}/${data.startDate.month != null ? data.startDate.month : '?'}/${data.startDate.year != null ? data.startDate.year : '?'}`}
+              />
+              <InfoItem
+                title="End Date"
+                value={`${data.endDate.day != null ? data.endDate.day : '?'}/${data.endDate.month != null ? data.endDate.month : '?'}/${data.endDate.year != null ? data.endDate.year : '?'}`}
+              />
+              <InfoItem
+                title="Season"
+                value={`${data.season} ${
+                  data.seasonYear
+                }`}
+              />
+              <InfoItem
+                title="Average Score"
+                value={`${data.averageScore}%`}
+              />
+              <InfoItem
+                title="Mean Score"
+                value={`${data.meanScore}%`}
+              />
               <InfoItem
                 title='Popular'
                 value={data.popularity}
@@ -250,26 +294,22 @@ const DetailsPage: React.FC<DetailsProps> = ({
                 title="Trending"
                 value={data.trending}
               />
-
-              {/* <InfoItem
+              <InfoItem
                 title="Studio"
-                value={data.studios.map((studio) => (
-                  <p key={studio.studioId}>
-                    <Link href={`/studios/${studio.studioId}`}>
+                value={data.studios.edges.map((studio) => (
+                  <p key={studio.node.id}>
+                    <Link href={`/studios/${studio.node.id}`}>
                       <a className="hover:text-primary-300 transition duration-300">
-                        {studio.studio.name}
+                        {studio.node.name}
                       </a>
                     </Link>
                   </p>
                 ))}
-              /> */}
-
-              <InfoItem
-                title="Season"
-                value={`${data.season} ${
-                  data.seasonYear
-                }`}
               />
+              <InfoItem title="English" value={data.title.english} />
+              <InfoItem title="Native" value={data.title.native} />
+              <InfoItem title="Romanji" value={data.title.romaji} />
+
               <InfoItem
                 title="Synonyms"
                 value={data.synonyms.join("\n")}

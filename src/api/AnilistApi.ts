@@ -38,6 +38,11 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $ty
             month
             day
          }
+         endDate {
+            day
+            month
+            year
+         }
          trending
          popularity
          favourites
@@ -53,17 +58,18 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $ty
          isAdult
          countryOfOrigin
          averageScore
+         meanScore
          synonyms
          studios {
             edges {
-            id
-            isMain
-            node {
                id
-               name
-               isAnimationStudio
-               favourites
-            }
+               isMain
+               node {
+                  id
+                  name
+                  isAnimationStudio
+                  favourites
+               }
             }
          }
          characters(sort: ROLE) {

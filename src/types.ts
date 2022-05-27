@@ -155,13 +155,19 @@ export type Character = {
 };
 
 export type StudioConnection = {
-  studioId: number;
-  isMain: boolean;
-  id: number;
-  mediaId: number;
-  studio: Studio;
-  media: Anime;
+  // studioId: number;
+  // isMain: boolean;
+  // id: number;
+  // mediaId: number;
+  // studio: Studio;
+  // media: Anime;
+  edges: StudioEdge[];
+  id: number
 };
+
+export type StudioEdge = {
+  node: Studio;
+}
 
 export type Studio = {
   id: number;
@@ -183,6 +189,7 @@ export interface Media<T extends Anime | Manga> {
   title: MediaTitle;
   coverImage: CoverImage;
   startDate: FuzzyDate;
+  endDate: FuzzyDate;
   trending: number;
   popularity: number;
   favourites: number;
@@ -198,9 +205,11 @@ export interface Media<T extends Anime | Manga> {
   isAdult: boolean;
   synonyms: string[];
   averageScore: number;
+  meanScore: number;
   description: string;
   updated_at?: string;
   created_at?: string;
+  episodes?: number;
 }
 
 export interface Anime extends Media<Anime> {
@@ -208,7 +217,7 @@ export interface Anime extends Media<Anime> {
   season: string;
   seasonYear: number;
   totalEpisodes: number;
-  studios: StudioConnection[];
+  studios: StudioConnection;
   voiceActors: VoiceActorConnection[];
   airingSchedule: AiringSchedule;
   episodeUpdatedAt: string;
