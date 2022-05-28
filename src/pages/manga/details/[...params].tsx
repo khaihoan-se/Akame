@@ -1,23 +1,18 @@
 import AnimeApi from "@/api/AnilistApi";
 import { Manga } from "@/types";
-import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import React from "react";
 import Image from '@/components/shared/Image'
 import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "@/components/shared/Head";
 import PlainCard from '@/components/shared/PlainCard'
-import withRedirect from '@/hocs/withRedirect'
 import InfoItem from "@/components/shared/InfoItem";
 import Link from "next/link";
-import dayjs from "@/lib/dayjs";
 import DotList from "@/components/shared/DotList";
 import MediaDescription from "@/components/shared/MediaDescription";
 import DetailsSection from "@/components/shared/DetailsSection";
-import CharacterConnectionCard from "@/components/shared/CharacterConnectionCard";
 import Card from "@/components/shared/Card";
 import List from "@/components/shared/List";
-import CircleButton from "@/components/shared/CircleButton";
-import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import { getDataText } from "@/utils";
 
 const bannerVariants = {
@@ -258,17 +253,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }));
     return { paths, fallback: "blocking" };
 }
-// export default withRedirect(DetailsPage, (router, props) => {
-//     const { params } = router.query;
-//     const [id, slug] = params as string[];
-//     const title = props.mangaDetail[0].title.english
-  
-//     if (slug) return null;
-  
-//     return {
-//       url: `/anime/details/${id}/${title}`,
-//       options: {
-//         shallow: true,
-//       },
-//     };
-// });
+
+export default DetailsPage
