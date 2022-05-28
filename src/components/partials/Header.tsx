@@ -7,6 +7,7 @@ import Search from "@/components/shared/Search";
 import { RiGlobalLine } from "react-icons/ri";
 import Button from "../shared/Button";
 import NavItem from "../shared/NavItem";
+import { FiSearch } from "react-icons/fi"
 
 const MENU_LIST = [
     { title: 'Anime', path: '/' },
@@ -52,7 +53,6 @@ const Header: React.FC = () => {
             </ul>
             {/* tools */}
             <div className="flex items-center">
-                <Search classSearch={classNames("mr-6", istop && "bg-background-800")} />
                 <div>
                     <div className={classNames(
                         "p-2 flex items-center rounded-3xl bg-background-900 gap-x-1.5 mr-6 cursor-pointer",
@@ -62,6 +62,9 @@ const Header: React.FC = () => {
                         <span className="text-base text-white">English</span>
                     </div>
                 </div>
+                <Link href='/browse'>
+                    <FiSearch className="mr-6 hover:text-primary-500" />
+                </Link>
                 <Button title="Login" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
             </div>
         </header>
