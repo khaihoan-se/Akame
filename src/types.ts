@@ -225,6 +225,7 @@ export interface Manga extends Media<Manga> {
   totalChapters: number;
   chapterUpdatedAt: string;
   sourceConnections: MangaSourceConnection[];
+  trailer?: Trailer;
 }
 
 export interface Watched {

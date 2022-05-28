@@ -1,6 +1,6 @@
 import AnimeApi from "@/api/AnilistApi";
 import { Manga } from "@/types";
-import React from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import Image from '@/components/shared/Image'
 import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -16,6 +16,10 @@ import List from "@/components/shared/List";
 import { getDataText } from "@/utils";
 import CharacterConnectionCard from "@/components/shared/CharacterConnectionCard";
 import withRedirect from "@/hocs/withRedirect";
+import YouTube from "react-youtube";
+import CircleButton from "@/components/shared/CircleButton";
+import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
+import classNames from "classnames";
 
 
 const bannerVariants = {
@@ -32,7 +36,32 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
     const data = mangaDetail[0];
     const title = data?.title.english;
     const description = data?.description;
-    console.log(data);
+
+    const [showTrailer, setShowTrailer] = useState(false);
+    const [player, setPlayer] =
+      useState<ReturnType<YouTube["getInternalPlayer"]>>();
+    const [isMuted, setIsMuted] = useState(true);
+    const isRanOnce = useRef(false);
+  
+    const mute = useCallback(() => {
+      if (!player) return;
+  
+      player.mute();
+  
+      setIsMuted(true);
+    }, [player]);
+  
+    const unMute = useCallback(() => {
+      if (!player) return;
+  
+      player.unMute();
+  
+      setIsMuted(false);
+    }, [player]);
+  
+    useEffect(() => {
+      setShowTrailer(false);
+    }, [data]);
     return (
         <>
             <Head
@@ -45,7 +74,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
                 <div className="group relative w-full h-[450px] overflow-hidden">
                     <AnimatePresence>
                         {
-                            data.bannerImage && (
+                            data.bannerImage && !showTrailer && (
                                 <motion.div
                                 variants={bannerVariants}
                                 animate="animate"
@@ -61,11 +90,62 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
                                     objectPosition="50% 35%"
                                     alt={data.bannerImage}
                                 />
-                                </motion.div>
-                            )
+                                </motion.div>)
+                        }
+                        {
+                        (data as Manga)?.trailer && (
+                            <YouTube
+                            videoId={(data as Manga)?.trailer?.id}
+                            onReady={({ target }) => {
+                                setPlayer(target);
+                            }}
+                            onPlay={({ target }) => {
+                                setShowTrailer(true);
+
+                                if (!isRanOnce.current) {
+                                setIsMuted(true);
+                                } else if (!isMuted) {
+                                setIsMuted(false);
+
+                                target.unMute();
+                                }
+
+                                isRanOnce.current = true;
+                            }}
+                            onEnd={() => {
+                                setShowTrailer(false);
+                            }}
+                            onError={() => {
+                                setShowTrailer(false);
+                            }}
+                            containerClassName={classNames(
+                                "relative w-full overflow-hidden aspect-w-16 aspect-h-9 h-[300%] -top-[100%]",
+                                !showTrailer && "hidden"
+                            )}
+                            className="absolute inset-0 w-full h-full"
+                            opts={{
+                                playerVars: {
+                                autoplay: 1,
+                                modestbranding: 1,
+                                controls: 0,
+                                mute: 1,
+                                origin: "https://kaguya.live",
+                                },
+                            }}
+                            />
+                        )
                         }
                     </AnimatePresence>
                     <div className="absolute inset-0 flex flex-col justify-center px-4 banner__overlay md:px-12"></div>
+                    {showTrailer && player && (
+                    <CircleButton
+                        LeftIcon={isMuted ? BsFillVolumeMuteFill : BsFillVolumeUpFill}
+                        outline
+                        className="absolute bottom-16 right-12"
+                        iconClassName="w-6 h-6"
+                        onClick={isMuted ? unMute : mute}
+                    />
+                    )}
                 </div>
                 {/* D */}
                 <div className="relative px-4 pb-4 sm:px-12 bg-background-900">
@@ -270,4 +350,3 @@ export default withRedirect(DetailsPage, (router, props) => {
       },
     };
   });
-// export default DetailsPage
