@@ -4,7 +4,7 @@ interface VariablesType {
    [key: string]: any;
 }
 
-const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $type: MediaType, $season: MediaSeason, $sort: [MediaSort]) {
+const query = `query ($page: Int, $perPage: Int, $search: String, $seasonYear: Int, $type: MediaType, $season: MediaSeason, $sort: [MediaSort]) {
    Page( page: $page, perPage: $perPage ) {
       pageInfo {
          total
@@ -13,7 +13,7 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $ty
          hasNextPage
          perPage
       }
-      media( type: $type, sort: $sort, season: $season, seasonYear: $seasonYear, id: $id ) {
+      media( type: $type, sort: $sort, season: $season, seasonYear: $seasonYear, search: $search ) {
          description
          trailer {
             id

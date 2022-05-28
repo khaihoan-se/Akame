@@ -4,25 +4,39 @@ import Select from "@/components/shared/Select";
 import { Anime, Manga } from "@/types";
 import AnimeApi from "@/api/AnilistApi";
 import { useRouter } from "next/router";
+import AnimeBrowseList from "@/components/features/anime/AnimeBrowseList";
 
 const Browse: React.FC = () => {
     const [ data, setData ] = useState([])
-    const { query } = useRouter()
+    const [ loading, setLoading ] = useState<boolean>(true)
     const [ fiter, setFiter ] = useState('')
+    const router = useRouter()
+    const type = router.query.type;
+    
+    const handleSearchText = (e: any) => {
+        setFiter(e.target.value)
+        if(fiter.length > 0) {
+            router.query.search = fiter
+            router.push(router)
+        }
+    }
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await AnimeApi.getAnime({
-                    type: query.type,
-                    search: fiter,
-                    perPage: 5
+                    type: type === 'anime' ? 'ANIME' : 'MANGA',
+                    search: fiter.length < 1 ? null : fiter,
+                    sort: 'POPULARITY_DESC',
                 })
-                console.log(res);
+                setData(res.data.Page.media)
+                setLoading(false)
                 
             } catch (error) {
                 console.log(error)
             }
         }
+        fetchData()
     }, [fiter])
     
     return (
@@ -35,8 +49,9 @@ const Browse: React.FC = () => {
                 <Select />
             </div> */}
             <div>
-                <input type="text" className="outline-none text-black" onChange={(e) => setFiter(e.target.value)} />
+                <input type="text" className="outline-none text-black" onChange={handleSearchText} />
             </div>
+           { loading ? <h1>Loading...</h1> : <AnimeBrowseList type={type === 'anime' ? 'anime' : 'manga'} data={data}  /> }
         </div>
     )
 }

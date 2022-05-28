@@ -66,8 +66,6 @@ const Card = <T extends "anime" | "manga">(props: AnimeCardProps<T>) => {
         : "white",
     [data]
   );
-console.log('data',data);
-
   return (
     <Link href={redirectUrl}>
       <a>
