@@ -1,9 +1,9 @@
 import React from "react";
 
-const Details: React.FC = () => {
+const DetailsPage: React.FC = () => {
     return (
         <div>Details</div>
     )
 }
 
-export default Details;
+export default DetailsPage;

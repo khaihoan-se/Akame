@@ -155,12 +155,6 @@ export type Character = {
 };
 
 export type StudioConnection = {
-  // studioId: number;
-  // isMain: boolean;
-  // id: number;
-  // mediaId: number;
-  // studio: Studio;
-  // media: Anime;
   edges: StudioEdge[];
   id: number
 };

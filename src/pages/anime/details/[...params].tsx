@@ -1,6 +1,5 @@
 import AnimeApi from "@/api/AnilistApi";
 import { Anime } from "@/types";
-import { NextRouter, useRouter } from "next/router";
 import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import Image from '@/components/shared/Image'
 import { AnimatePresence, motion } from "framer-motion";
@@ -21,6 +20,7 @@ import Card from "@/components/shared/Card";
 import List from "@/components/shared/List";
 import CircleButton from "@/components/shared/CircleButton";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
+import { getDataText } from "@/utils";
 
 
 const bannerVariants = {
@@ -37,9 +37,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
   const data = animeDetail[0]  
   const title = data?.title.english
   const description = data?.description
-  console.log('====================================');
   console.log(data);
-  console.log('====================================');
   const nextAiringSchedule = useMemo(
     () =>
       data?.airingSchedule.nodes
@@ -262,11 +260,11 @@ const DetailsPage: React.FC<DetailsProps> = ({
               />
               <InfoItem
                 title="Start Date"
-                value={`${data.startDate.day != null ? data.startDate.day : '?'}/${data.startDate.month != null ? data.startDate.month : '?'}/${data.startDate.year != null ? data.startDate.year : '?'}`}
+                value={`${getDataText(data.startDate.month)} ${data.startDate.day}, ${data.startDate.year}`}
               />
               <InfoItem
                 title="End Date"
-                value={`${data.endDate.day != null ? data.endDate.day : '?'}/${data.endDate.month != null ? data.endDate.month : '?'}/${data.endDate.year != null ? data.endDate.year : '?'}`}
+                value={`${getDataText(data.endDate.month)} ${data.endDate.day}, ${data.endDate.year}`}
               />
               <InfoItem
                 title="Season"
