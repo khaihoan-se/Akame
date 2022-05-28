@@ -22,12 +22,11 @@ import CircleButton from "@/components/shared/CircleButton";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import { getDataText } from "@/utils";
 
-
 const bannerVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-  };
+};
 interface DetailsProps {
   animeDetail: Anime[];
 }
@@ -351,15 +350,6 @@ const DetailsPage: React.FC<DetailsProps> = ({
                 ))}
               </DetailsSection>
             )}
-
-            {/* {!!data?.relations?.length && (
-              <DetailsSection title={t("relations_section")}>
-                <List data={anime.relations.map((relation) => relation.media)}>
-                  {(anime) => <Card type="anime" data={anime} />}
-                </List>
-              </DetailsSection>
-            )} */}
-
             {!!data?.recommendations?.nodes.length && (
               <DetailsSection title="Recommendations">
                 <List
@@ -403,6 +393,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
   return { paths, fallback: "blocking" };
 }
+
 export default withRedirect(DetailsPage, (router, props) => {
   const { params } = router.query;
   const [id, slug] = params as string[];

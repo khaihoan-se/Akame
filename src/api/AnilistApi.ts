@@ -139,10 +139,10 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $seasonYear: Int, $ty
          relations {
             edges {
             relationType(version: 2)
-            node {
-               id
-               type
-            }
+               node {
+                  id
+                  type
+               }
             }
          }
          recommendations(sort: RATING_DESC) {
