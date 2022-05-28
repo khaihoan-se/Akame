@@ -36,7 +36,6 @@ const DetailsPage: React.FC<DetailsProps> = ({
   const data = animeDetail[0]  
   const title = data?.title.english
   const description = data?.description
-  console.log(data);
   const nextAiringSchedule = useMemo(
     () =>
       data?.airingSchedule.nodes

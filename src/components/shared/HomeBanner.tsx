@@ -103,7 +103,7 @@ const HomeBanner = <T extends "anime" | "manga">({
             </motion.div>
           )}
 
-          {type === "anime" && (activeSlide as Anime)?.trailer && (
+          {(activeSlide as Anime)?.trailer && (
             <YouTube
               videoId={(activeSlide as Anime)?.trailer?.id}
               onReady={({ target }) => {

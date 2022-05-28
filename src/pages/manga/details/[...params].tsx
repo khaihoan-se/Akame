@@ -95,43 +95,43 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
                         {
                         (data as Manga)?.trailer && (
                             <YouTube
-                            videoId={(data as Manga)?.trailer?.id}
-                            onReady={({ target }) => {
-                                setPlayer(target);
-                            }}
-                            onPlay={({ target }) => {
-                                setShowTrailer(true);
+                                videoId={(data as Manga)?.trailer?.id}
+                                onReady={({ target }) => {
+                                    setPlayer(target);
+                                }}
+                                onPlay={({ target }) => {
+                                    setShowTrailer(true);
 
-                                if (!isRanOnce.current) {
-                                setIsMuted(true);
-                                } else if (!isMuted) {
-                                setIsMuted(false);
+                                    if (!isRanOnce.current) {
+                                    setIsMuted(true);
+                                    } else if (!isMuted) {
+                                    setIsMuted(false);
 
-                                target.unMute();
-                                }
+                                    target.unMute();
+                                    }
 
-                                isRanOnce.current = true;
-                            }}
-                            onEnd={() => {
-                                setShowTrailer(false);
-                            }}
-                            onError={() => {
-                                setShowTrailer(false);
-                            }}
-                            containerClassName={classNames(
-                                "relative w-full overflow-hidden aspect-w-16 aspect-h-9 h-[300%] -top-[100%]",
-                                !showTrailer && "hidden"
-                            )}
-                            className="absolute inset-0 w-full h-full"
-                            opts={{
-                                playerVars: {
-                                autoplay: 1,
-                                modestbranding: 1,
-                                controls: 0,
-                                mute: 1,
-                                origin: "https://kaguya.live",
-                                },
-                            }}
+                                    isRanOnce.current = true;
+                                }}
+                                onEnd={() => {
+                                    setShowTrailer(false);
+                                }}
+                                onError={() => {
+                                    setShowTrailer(false);
+                                }}
+                                containerClassName={classNames(
+                                    "relative w-full overflow-hidden aspect-w-16 aspect-h-9 h-[300%] -top-[100%]",
+                                    !showTrailer && "hidden"
+                                )}
+                                className="absolute inset-0 w-full h-full"
+                                opts={{
+                                    playerVars: {
+                                    autoplay: 1,
+                                    modestbranding: 1,
+                                    controls: 0,
+                                    mute: 1,
+                                    origin: "https://kaguya.live",
+                                    },
+                                }}
                             />
                         )
                         }
