@@ -264,7 +264,7 @@ export default withRedirect(DetailsPage, (router, props) => {
     if (slug) return null;
   
     return {
-      url: `/anime/details/${id}/${title}`,
+      url: `/manga/details/${id}/${title}`,
       options: {
         shallow: true,
       },
