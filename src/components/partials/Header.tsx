@@ -17,6 +17,12 @@ const MENU_LIST = [
 const Header: React.FC = () => {
     const router = useRouter();
     
+    const searchUrl = router.asPath.includes("manga")
+    ? "/browse?type=manga"
+    : "/browse?type=anime";
+
+    console.log(router);
+    
     const [ istop, setIstop ] = useState<boolean>(false);
 
     const isActive = (url: string) => {
@@ -61,8 +67,8 @@ const Header: React.FC = () => {
                         <span className="text-base text-white">English</span>
                     </div>
                 </div>
-                <Link href='/browse'>
-                    <FiSearch className="mr-6 hover:text-primary-500 text-xl cursor-pointer" />
+                <Link href={searchUrl}>
+                    <FiSearch className="mr-6 hover:text-primary-500 text-2xl cursor-pointer" />
                 </Link>
                 <Button title="Login" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
             </div>
