@@ -62,7 +62,7 @@ const Header: React.FC = () => {
                     </div>
                 </div>
                 <Link href='/browse'>
-                    <FiSearch className="mr-6 hover:text-primary-500 text-lg cursor-pointer" />
+                    <FiSearch className="mr-6 hover:text-primary-500 text-xl cursor-pointer" />
                 </Link>
                 <Button title="Login" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
             </div>
