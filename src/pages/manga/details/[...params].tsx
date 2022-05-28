@@ -34,7 +34,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
     mangaDetail
 }) => {
     const data = mangaDetail[0];
-    const title = data?.title.english;
+    const title = data?.title.english === null ? data?.title.native : data?.title.english;
     const description = data?.description;
 
     const [showTrailer, setShowTrailer] = useState(false);
@@ -339,7 +339,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default withRedirect(DetailsPage, (router, props) => {
     const { params } = router.query;
     const [id, slug] = params as string[];
-    const title = props.mangaDetail[0].title.english &&  props.mangaDetail[0].title.native
+    const title = props.mangaDetail[0].title.english === null ? props.mangaDetail[0].title.native : props.mangaDetail[0].title.english
   
     if (slug) return null;
   
