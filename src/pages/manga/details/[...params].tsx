@@ -14,6 +14,8 @@ import DetailsSection from "@/components/shared/DetailsSection";
 import Card from "@/components/shared/Card";
 import List from "@/components/shared/List";
 import { getDataText } from "@/utils";
+import CharacterConnectionCard from "@/components/shared/CharacterConnectionCard";
+
 
 const bannerVariants = {
     initial: { opacity: 0 },
@@ -196,7 +198,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
                         </div>
                     </div>
                     <div className="space-y-12 md:col-span-8">
-                    {/* {!!data?.characters?.edges.length && (
+                    {!!data?.characters?.edges.length && (
                     <DetailsSection
                         title="Characters"
                         className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
@@ -205,11 +207,11 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
                         <CharacterConnectionCard
                             characterConnection={character}
                             key={index}
-                            type="anime"
+                            type="manga"
                         />
                         ))}
                     </DetailsSection>
-                    )} */}
+                    )}
                     {!!data?.recommendations?.nodes.length && (
                     <DetailsSection title="Recommendations">
                         <List
