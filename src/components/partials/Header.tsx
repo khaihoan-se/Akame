@@ -20,8 +20,6 @@ const Header: React.FC = () => {
     const searchUrl = router.asPath.includes("manga")
     ? "/browse?type=manga"
     : "/browse?type=anime";
-
-    console.log(router);
     
     const [ istop, setIstop ] = useState<boolean>(false);
 

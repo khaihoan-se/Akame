@@ -220,7 +220,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
                   value={data.status}
                 />
                 <InfoItem
-                  title="age_rated"
+                  title="Age rated"
                   value={data.isAdult ? "18+" : ""}
                 />
 

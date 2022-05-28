@@ -191,7 +191,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
                                 value={data.status}
                                 />
                                 <InfoItem
-                                title="age_rated"
+                                title="Age rated"
                                 value={data.isAdult ? "18+" : ""}
                                 />
                             </div>
