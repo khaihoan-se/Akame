@@ -339,7 +339,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default withRedirect(DetailsPage, (router, props) => {
     const { params } = router.query;
     const [id, slug] = params as string[];
-    const title = props.mangaDetail[0].title.english
+    const title = props.mangaDetail[0].title.english &&  props.mangaDetail[0].title.native
   
     if (slug) return null;
   
@@ -349,4 +349,4 @@ export default withRedirect(DetailsPage, (router, props) => {
         shallow: true,
       },
     };
-  });
+});
