@@ -3,7 +3,6 @@ import Logo from "@/components/shared/Logo";
 import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/router";
-import Search from "@/components/shared/Search";
 import { RiGlobalLine } from "react-icons/ri";
 import Button from "../shared/Button";
 import NavItem from "../shared/NavItem";
@@ -63,7 +62,7 @@ const Header: React.FC = () => {
                     </div>
                 </div>
                 <Link href='/browse'>
-                    <FiSearch className="mr-6 hover:text-primary-500" />
+                    <FiSearch className="mr-6 hover:text-primary-500 text-lg cursor-pointer" />
                 </Link>
                 <Button title="Login" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
             </div>
