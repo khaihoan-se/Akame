@@ -20,12 +20,12 @@ interface HomaPage {
 }
 
 const Home: NextPage<HomaPage> = ({
-   // trendingAnime,
-   // popularSeason,
-   // popularAllTime,
-   // favouriteAllTime,
-   // animeNextSeason,
-   // ratingAnime,
+   trendingAnime,
+   popularSeason,
+   popularAllTime,
+   favouriteAllTime,
+   animeNextSeason,
+   ratingAnime,
 }) => {
    const currentSeason = useMemo(getSeason, []);
    const nextSeason = useMemo(getNextSeason, [])
@@ -36,7 +36,7 @@ const Home: NextPage<HomaPage> = ({
             title="Akame - Anime"
          />
 
-         {/* <ClientOnly>
+         <ClientOnly>
             <HomeBanner type='anime' data={trendingAnime} />
 
             <div className="space-y-8">
@@ -76,59 +76,59 @@ const Home: NextPage<HomaPage> = ({
                />
 
             </div>
-         </ClientOnly> */}
+         </ClientOnly>
 
       </React.Fragment>
    )
 }
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//    const currentSeason = getSeason();
-//    const nextSeason = getNextSeason();
-//    const { data: trendingAnime } = await AnimeApi.getAnime({
-//       type: 'ANIME',
-//       perPage: 15,
-//       sort: 'TRENDING_DESC'
-//    })
-//    const { data: popularSeason } = await AnimeApi.getAnime({
-//       type: 'ANIME',
-//       seasonYear: currentSeason.year,
-//       sort: 'POPULARITY_DESC',
-//       season: currentSeason.season,
-//       perPage: 5,
-//    })
-//    const { data: popularAllTime } = await AnimeApi.getAnime({
-//       type: 'ANIME',
-//       sort: 'POPULARITY_DESC',
-//       perPage: 5,
-//    })
-//    const { data: favouriteAllTime } = await AnimeApi.getAnime({
-//       type: 'ANIME',
-//       sort: 'FAVOURITES_DESC',
-//       perPage: 5,
-//    })
-//    const { data: animeNextSeason } = await AnimeApi.getAnime({
-//       type: 'ANIME',
-//       sort: 'POPULARITY_DESC',
-//       season: nextSeason.season,
-//       seasonYear: 2022,
-//       perPage: 5,
-//    })
-//    const { data: ratingAnime } = await AnimeApi.getAnime({
-//       type: 'ANIME',
-//       perPage: 20,
-//       sort: 'SCORE_DESC',
-//    })
-//    return {
-//       props: {
-//          trendingAnime: trendingAnime.Page.media,
-//          popularSeason: popularSeason.Page.media,
-//          popularAllTime: popularAllTime.Page.media,
-//          favouriteAllTime: favouriteAllTime.Page.media,
-//          animeNextSeason: animeNextSeason.Page.media,
-//          ratingAnime: ratingAnime.Page.media,
-//       }
-//    }
-// }
+export const getServerSideProps: GetServerSideProps = async () => {
+   const currentSeason = getSeason();
+   const nextSeason = getNextSeason();
+   const { data: trendingAnime } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      perPage: 15,
+      sort: 'TRENDING_DESC'
+   })
+   const { data: popularSeason } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      seasonYear: currentSeason.year,
+      sort: 'POPULARITY_DESC',
+      season: currentSeason.season,
+      perPage: 5,
+   })
+   const { data: popularAllTime } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      sort: 'POPULARITY_DESC',
+      perPage: 5,
+   })
+   const { data: favouriteAllTime } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      sort: 'FAVOURITES_DESC',
+      perPage: 5,
+   })
+   const { data: animeNextSeason } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      sort: 'POPULARITY_DESC',
+      season: nextSeason.season,
+      seasonYear: 2022,
+      perPage: 5,
+   })
+   const { data: ratingAnime } = await AnimeApi.getAnime({
+      type: 'ANIME',
+      perPage: 20,
+      sort: 'SCORE_DESC',
+   })
+   return {
+      props: {
+         trendingAnime: trendingAnime.Page.media,
+         popularSeason: popularSeason.Page.media,
+         popularAllTime: popularAllTime.Page.media,
+         favouriteAllTime: favouriteAllTime.Page.media,
+         animeNextSeason: animeNextSeason.Page.media,
+         ratingAnime: ratingAnime.Page.media,
+      }
+   }
+}
 
 export default Home;

@@ -32,6 +32,7 @@ const Browse: NextPage<BrowseProps> = () => {
                 const { datas }: any = await AnimeApi.getAnime({
                     type: 'ANIME',
                     sort: 'POPULARITY_DESC',
+                    search: fiter.length == 0 ? null : fiter
                 })
                 console.log(datas);
                 console.log('success');
