@@ -388,7 +388,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await AnimeApi.getAnime({
     type: 'ANIME',
     perPage: 5,
-    sort: 'TRENDING_DESC'
   })
   const paths = data.Page.media.map((anime: Anime) => ({
     params: { params: [anime.id.toString()] },
