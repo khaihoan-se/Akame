@@ -12,7 +12,7 @@ import { MdTagFaces } from "react-icons/md";
 
 interface AnimeCardProps<T> {
   type: T;
-  data: T extends "anime" ? Anime : Manga;
+  data: any;
   className?: string;
   containerEndSlot?: React.ReactNode;
   imageEndSlot?: React.ReactNode;
@@ -95,7 +95,7 @@ const Card = <T extends "anime" | "manga">(props: AnimeCardProps<T>) => {
             <motion.div className="absolute bottom-0 flex flex-col items-center justify-end px-2 py-4 text-center">
                 <motion.div variants={infoVariants} className="mt-2 !mb-1">
                   <DotList>
-                    {data.genres?.map((genre) => (
+                    {data.genres?.map((genre: any) => (
                       <span
                         className="text-sm font-semibold"
                         style={{

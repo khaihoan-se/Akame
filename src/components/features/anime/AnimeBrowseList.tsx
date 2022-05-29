@@ -11,14 +11,13 @@ const AnimeBrowseList = <T extends "anime" | "manga">({
     data,
     type
 }: AnimeBrowseListProps<T>) => {
-    console.log(data);
-  return (
-    <div className="mt-8">
-        <List data={data}>
-            {(data) => <Card data={data} type={type} />}
-        </List>
-    </div>
-  );
+    return (
+        <div className="mt-8">
+            <List data={data}>
+                {(data) => <Card data={data} type="anime" />}
+            </List>
+        </div>
+    );
 }
 
 export default AnimeBrowseList;
