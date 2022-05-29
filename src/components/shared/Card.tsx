@@ -12,7 +12,7 @@ import { MdTagFaces } from "react-icons/md";
 
 interface AnimeCardProps<T> {
   type: T;
-  data: any;
+  data: T extends "anime" ? any : any;
   className?: string;
   containerEndSlot?: React.ReactNode;
   imageEndSlot?: React.ReactNode;
