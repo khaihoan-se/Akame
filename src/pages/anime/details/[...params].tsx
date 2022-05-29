@@ -44,6 +44,9 @@ const DetailsPage: React.FC<DetailsProps> = ({
     [data?.airingSchedule]
   );
 
+  console.log(data);
+  
+
   const nextAiringScheduleTime = useMemo(() => {
     if (!nextAiringSchedule?.airingAt) return null;
 
