@@ -393,21 +393,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { params: [anime.id.toString()] },
   }));
   return { paths, fallback: "blocking" };
-}
+};
 
-// export default withRedirect(DetailsPage, (router, props) => {
-//   const { params } = router.query;
-//   const [id, slug] = params as string[];
-//   const title = props.animeDetail[0].title.english
+export default withRedirect(DetailsPage, (router, props) => {
+  const { params } = router.query;
+  const [id, slug] = params as string[];
+  const title = props.animeDetail[0].title.english
 
-//   if (slug) return null;
+  if (slug) return null;
 
-//   return {
-//     url: `/anime/details/${id}/${title}`,
-//     options: {
-//       shallow: true,
-//     },
-//   };
-// });
-
-export default DetailsPage
+  return {
+    url: `/anime/details/${id}/${title}`,
+    options: {
+      shallow: true,
+    },
+  };
+});
