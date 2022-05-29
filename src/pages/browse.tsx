@@ -53,7 +53,7 @@ const Browse: NextPage<BrowseProps> = () => {
             <div>
                 <input type="text" className="outline-none text-black" onChange={handleSearchText} />
             </div>
-            <AnimeBrowseList type={type === 'anime' ? 'anime' : 'manga'} data={data} />
+            {/* <AnimeBrowseList type={type === 'anime' ? 'anime' : 'manga'} data={data} /> */}
         </div>
     )
 }

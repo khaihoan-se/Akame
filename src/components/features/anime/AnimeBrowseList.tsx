@@ -13,9 +13,9 @@ const AnimeBrowseList = <T extends "anime" | "manga">({
 }: AnimeBrowseListProps<T>) => {
     return (
         <div className="mt-8">
-            <List data={data}>
+            {/* <List data={data}>
                 {(data) => <Card data={data} type="anime" />}
-            </List>
+            </List> */}
         </div>
     );
 }
