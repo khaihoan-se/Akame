@@ -1,4 +1,3 @@
-import { Media } from "@/anilist";
 import AnimeApi from "@/api/AnilistApi";
 import FormSeachAnime from "@/components/features/anime/FormSeachAnime";
 import FormSearchManga from "@/components/features/manga/FormSearchManga";
@@ -12,12 +11,13 @@ const Browse: NextPage = () => {
     const [ search, setSearch ] = useState('');
     const [ data, setData ] = useState([])
     const [ loading, setLoading ] = useState<boolean>(false)
-
+    const [ page, setPage] = useState(1)
     const router = useRouter();
 
     const handleSearch = (e: any) => {
         setSearch(e.target.value)
     }
+
     const getType = (context: any) => {
         if(context === 'anime') {
             return 'ANIME'
@@ -26,18 +26,23 @@ const Browse: NextPage = () => {
             return 'MANGA'
         }
     }
+
     useEffect(() => {
         const fetchDataSearch = async () => {
             try {      
-                setLoading(true)          
+                setLoading(true)
                 const datas: any = await AnimeApi.getAnime({
                     type: getType(router.query.type),
-                    sort: 'POPULARITY_DESC',
+                    sort: router.query.sort,
                     search: search.length === 0 ? null : search,
-                    genre: !router.query.genres ? null : router.query.genres
+                    genre: !router.query.genres ? null : router.query.genres,
+                    season: !router.query.season ? null : router.query.season,
+                    seasonYear: !router.query.seasonYear ? null : router.query.seasonYear,
                 })
-                setData(datas.data.Page.media)
+                const NewData = datas.data.Page.media;
+                setData(NewData)
                 setLoading(false)
+                console.log(datas.data);
 
             } catch (error) {
                 console.log(error);

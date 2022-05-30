@@ -46,25 +46,25 @@ const Home: NextPage<HomaPage> = ({
                      title="POPULAR THIS SEASON"
                      type="anime"
                      data={popularSeason}
-                     viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
+                     viewMoreHref={`/browse?sort=POPULARITY_DESC&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                   />
                   <ColumnSection
                      title="ALL TIME POPULAR"
                      type="anime"
                      data={popularAllTime}
-                     viewMoreHref="/browse?sort=popularity&type=anime"
+                     viewMoreHref="/browse?sort=POPULARITY_DESC&type=anime"
                   />
                   <ColumnSection
                      title="All TIME FAVORITE"
                      type="anime"
                      data={favouriteAllTime}
-                     viewMoreHref="/browse?sort=favourites&type=anime"
+                     viewMoreHref="/browse?sort=FAVOURITES_DESC&type=anime"
                   />
                   <ColumnSection
                      title="ANIME NEXT SEASON"
                      type="anime"
                      data={animeNextSeason}
-                     viewMoreHref={`browse?type=anime&season=${nextSeason.season}&seasonYear=${nextSeason.year}&sort=popularity`}
+                     viewMoreHref={`browse?type=anime&season=${nextSeason.season}&seasonYear=${nextSeason.year}&sort=POPULARITY_DESC`}
                   />
                </Section>
 

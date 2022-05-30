@@ -137,7 +137,7 @@ const Card = <T extends "anime" | "manga">(props: AnimeCardProps<T>) => {
             className="mt-2 text-base font-semibold line-clamp-2"
             style={{ color: primaryColor }}
           >
-            {data.title.english}
+            {data.title.english || data.title.native}
           </p>
         </motion.div>
       </a>
