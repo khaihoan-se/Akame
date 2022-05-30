@@ -116,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
    })
    const { data: ratingAnime } = await AnimeApi.getAnime({
       type: 'ANIME',
-      perPage: 20,
+      perPage: 15,
       sort: 'SCORE_DESC',
    })
    return {
