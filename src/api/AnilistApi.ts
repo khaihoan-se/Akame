@@ -236,7 +236,7 @@ const query = `query (
 `;
 
 const AnimeApi = {
-   getAnime: (variables: VariablesType) => {      
+   getAnime: (variables: VariablesType) => { 
       return axiosClient.request({
          method: 'POST',
          data: {
