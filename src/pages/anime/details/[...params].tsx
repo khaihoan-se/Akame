@@ -352,6 +352,18 @@ const DetailsPage: React.FC<DetailsProps> = ({
                 ))}
               </DetailsSection>
             )}
+            {!!data?.relations?.edges.length && (
+              <DetailsSection title="Relations">
+                <List
+                  data={data.relations.edges.map(
+                    (relation) => relation.node
+                  )}
+                >
+                  {(data: any) => <Card type="anime" data={data} />}
+                </List>
+              </DetailsSection>
+            )}
+            
             {!!data?.recommendations?.nodes.length && (
               <DetailsSection title="Recommendations">
                 <List

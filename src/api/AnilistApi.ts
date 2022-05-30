@@ -138,10 +138,34 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $search: String, $sea
          }
          relations {
             edges {
-            relationType(version: 2)
+               relationType(version: 2)
                node {
                   id
-                  type
+                  averageScore
+                  bannerImage
+                  countryOfOrigin
+                  coverImage {
+                  color
+                  medium
+                  large
+                  extraLarge
+                  }
+                  description
+                  duration
+                  favourites
+                  format
+                  genres
+                  isAdult
+                  popularity
+                  season
+                  seasonYear
+                  status
+                  title {
+                  english
+                  native
+                  romaji
+                  userPreferred
+                  }
                }
             }
          }

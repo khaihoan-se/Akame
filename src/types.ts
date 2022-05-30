@@ -111,9 +111,12 @@ export type RecommendationNode<T extends Anime | Manga> = {
 }
 
 export type Relation<T extends Anime | Manga> = {
-  media: T;
-  relationType: MediaRelation;
+  edges: RelationEdge<T>[];
 };
+
+export type RelationEdge<T extends Anime | Manga> = {
+  node: T;
+}
 
 export type CharacterImage = {
   large: string;
@@ -191,7 +194,7 @@ export interface Media<T extends Anime | Manga> {
   format: MediaFormat;
   status: MediaStatus;
   characters: CharacterConnection<T>;
-  relations: Relation<T>[];
+  relations: Relation<T>;
   recommendations: Recommendation<T>;
   tags: any[];
   genres: string[];
