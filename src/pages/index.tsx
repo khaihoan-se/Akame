@@ -69,7 +69,7 @@ const Home: NextPage<HomaPage> = ({
                </Section>
 
                <Rantings 
-                  title='Top 20 Anime'
+                  title='Top 10 Anime'
                   type='anime'
                   data={ratingAnime}
                   viewMoreHref='/browse?sort=score&type=anime'
@@ -116,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
    })
    const { data: ratingAnime } = await AnimeApi.getAnime({
       type: 'ANIME',
-      perPage: 20,
+      perPage: 10,
       sort: 'SCORE_DESC',
    })
    return {
