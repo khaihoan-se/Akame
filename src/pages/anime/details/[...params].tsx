@@ -34,7 +34,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
   animeDetail
 }) => {
   const data = animeDetail[0]  
-  const title = data?.title.english
+  const title = data?.title.english || data?.title.native
   const description = data?.description
   const nextAiringSchedule = useMemo(
     () =>
@@ -410,7 +410,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default withRedirect(DetailsPage, (router, props) => {
   const { params } = router.query;
   const [id, slug] = params as string[];
-  const title = props.animeDetail[0].title.english
+  const title = props.animeDetail[0].title.english || props.animeDetail[0].title.native
 
   if (slug) return null;
 
