@@ -59,3 +59,7 @@ li {
     rgba(0, 0, 0, 1)
   );
 }
+
+#nprogress .bar {
+  background: red;
+}

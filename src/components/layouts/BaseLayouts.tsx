@@ -12,6 +12,7 @@ Router.events.on('routeChangeError', NProgress.done)
 interface Props {
     children: any;
 }
+
 const BaseLayouts: React.FC<Props> = ({ children }) => {
     const [ isMobile, setIsMobile ] = React.useState(false)
     
