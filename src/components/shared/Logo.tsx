@@ -1,19 +1,22 @@
-import classNames from "classnames";
+import Image from "next/image";
 import React from "react";
-import Image from "@/components/shared/Image";
+import classNames from "classnames";
+import Link from "next/link";
 
-const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      className={classNames("relative flex mx-auto h-10 w-10", className)}
-      {...props}
-    >
-      <Image src="/logo.jpeg" layout="fill" objectFit="contain" alt="logo" className="rounded-full" />
-    </div>
-  );
-};
+interface LogoProps {
+    className?: string
+}
+const Logo: React.FC<LogoProps> = ({ className }) => {
+    return (
+        <Link href="/">
+            <div className={classNames(
+                "relative rounded-full cursor-pointer",
+                className
+            )}>
+                <Image src="/logo.jpeg" layout="fill" objectFit="contain" alt="logo" className="rounded-full" />
+            </div>
+        </Link>
+    )
+}
 
-export default React.memo(Logo);
+export default Logo;

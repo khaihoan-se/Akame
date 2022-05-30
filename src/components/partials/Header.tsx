@@ -4,14 +4,14 @@ import Link from "next/link";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 import { RiGlobalLine } from "react-icons/ri";
-import Button from "../shared/Button";
+import Button from "../shared/BaseButton";
 import NavItem from "../shared/NavItem";
-import { FiSearch } from "react-icons/fi"
+import { AiFillFacebook, AiOutlineSearch } from "react-icons/ai";
+
 
 const MENU_LIST = [
     { title: 'Anime', path: '/' },
     { title: 'Manga', path: '/manga' },
-    { title: 'Developer', path: '/developer' }
 ]
 
 const Header: React.FC = () => {
@@ -65,10 +65,27 @@ const Header: React.FC = () => {
                         <span className="text-base text-white">English</span>
                     </div>
                 </div>
-                <Link href={searchUrl}>
-                    <FiSearch className="mr-6 hover:text-primary-500 text-2xl cursor-pointer" />
-                </Link>
-                <Button title="Login" classButton="transition duration-300 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80 hover:bg-primary-500 bg-primary-500" />
+                
+                <NavItem href={searchUrl}>
+                    {({ isActive }) => (
+                        <AiOutlineSearch
+                        className={classNames(
+                            "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300 mr-6",
+                            isActive && "text-primary-300"
+                        )}
+                        />
+                    )}
+                </NavItem>
+
+                <div className="flex items-center space-x-2">
+                    <Link href="/login">
+                        <a>
+                            <Button primary className="px-4 py-2 rounded-md">
+                                <p>Login</p>
+                            </Button>
+                        </a>
+                    </Link>
+                </div>
             </div>
         </header>
     )
