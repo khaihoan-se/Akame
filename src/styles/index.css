@@ -60,3 +60,7 @@ li {
     rgba(0, 0, 0, 1)
   );
 }
+.no-scroll::-webkit-scrollbar { 
+  width: 0 !important;
+  display: none; 
+}

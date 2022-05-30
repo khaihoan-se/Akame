@@ -4,7 +4,17 @@ interface VariablesType {
    [key: string]: any;
 }
 
-const query = `query ($page: Int, $perPage: Int, $id: Int, $search: String, $seasonYear: Int, $type: MediaType, $season: MediaSeason, $sort: [MediaSort]) {
+const query = `query (
+      $page: Int, 
+      $perPage: Int, 
+      $id: Int, 
+      $search: String, 
+      $seasonYear: Int, 
+      $type: MediaType, 
+      $season: MediaSeason, 
+      $sort: [MediaSort],
+      $genre: String,
+   ) {
    Page( page: $page, perPage: $perPage ) {
       pageInfo {
          total
@@ -13,7 +23,15 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $search: String, $sea
          hasNextPage
          perPage
       }
-      media( type: $type, sort: $sort, season: $season, seasonYear: $seasonYear, search: $search, id: $id ) {
+      media( 
+            type: $type, 
+            sort: $sort, 
+            season: $season, 
+            seasonYear: $seasonYear, 
+            search: $search, 
+            id: $id,
+            genre: $genre
+         ) {
          description
          trailer {
             id
@@ -218,7 +236,7 @@ const query = `query ($page: Int, $perPage: Int, $id: Int, $search: String, $sea
 `;
 
 const AnimeApi = {
-   getAnime: (variables: VariablesType) => {
+   getAnime: (variables: VariablesType) => {      
       return axiosClient.request({
          method: 'POST',
          data: {
