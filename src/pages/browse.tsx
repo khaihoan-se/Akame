@@ -33,7 +33,7 @@ const Browse: NextPage = () => {
                 setLoading(true)
                 const datas: any = await AnimeApi.getAnime({
                     type: getType(router.query.type),
-                    sort: router.query.sort,
+                    sort: !router.query.sort ? 'POPULARITY_DESC' : router.query.sort,
                     search: search.length === 0 ? null : search,
                     genre: !router.query.genres ? null : router.query.genres,
                     season: !router.query.season ? null : router.query.season,
