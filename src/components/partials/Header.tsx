@@ -7,6 +7,8 @@ import { RiGlobalLine } from "react-icons/ri";
 import Button from "../shared/BaseButton";
 import NavItem from "../shared/NavItem";
 import { AiFillFacebook, AiOutlineSearch } from "react-icons/ai";
+import { fetchUser, userAccessToken } from "@/api/user";
+import Image from "../shared/Image";
 
 
 const MENU_LIST = [
@@ -23,9 +25,18 @@ const Header: React.FC = () => {
     
     const [ istop, setIstop ] = useState<boolean>(false);
 
+    const [ user, setUser ] = useState<any>({});
+    const [ accessToken, setAccessToken ] = useState(true)
+
     const isActive = (url: string) => {
         if(router.pathname === url) return true
     }
+
+    useEffect(() => {
+        const userInfo = fetchUser();
+        setUser(userInfo)
+        
+    }, [])
 
     useEffect(() => {
         const handleIsTop = () => {
@@ -34,6 +45,9 @@ const Header: React.FC = () => {
         
         document.addEventListener('scroll', handleIsTop);
     }, [])
+    
+    console.log(user);
+    
     return (
         <header className={classNames(
             "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-500 bg-gradient-to-b from-black/80 via-black/60 to-transparent",
@@ -78,13 +92,30 @@ const Header: React.FC = () => {
                 </NavItem>
 
                 <div className="flex items-center space-x-2">
-                    <Link href="/login">
-                        <a>
-                            <Button primary className="px-4 py-2 rounded-md">
-                                <p>Login</p>
-                            </Button>
-                        </a>
-                    </Link>
+                    {/* {accessToken
+                        ?   <Link href="/login">
+                                <a>
+                                    <Button primary className="px-4 py-2 rounded-md">
+                                        <p>Login</p>
+                                    </Button>
+                                </a>
+                            </Link> 
+                        :   <div className="relative h-10 w-10 rounded-full">
+                            </div>
+                    } */}
+                    {
+                        !user[0]
+                        ?   <Link href="/login">
+                                <a>
+                                    <Button primary className="px-4 py-2 rounded-md">
+                                        <p>Login</p>
+                                    </Button>
+                                </a>
+                            </Link>
+                        : <div className="relative h-10 w-10 rounded-full">
+                            <img src={user[0]?.photoURL} alt="" className="rounded-full object-cover" />
+                        </div>
+                    }
                 </div>
             </div>
         </header>

@@ -52,7 +52,7 @@ const Browse: NextPage = () => {
     return (
         <div className="py-20 px-4 md:px-12">
             <Head 
-                title="Tìm kiếm Anime - Akame"
+                title="Tìm kiếm Anime - Kurumi"
             />
             <div className="min-h-screen mt-10">
                 {

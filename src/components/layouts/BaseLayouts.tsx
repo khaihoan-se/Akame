@@ -4,6 +4,7 @@ import Footer from "@/components/partials/Footer";
 import MobileLayout from "./MobileLayout";
 import Router from "next/router";
 import NProgress from "nprogress";
+import Head from "next/head";
 
 
 Router.events.on('routeChangeStart', NProgress.start)

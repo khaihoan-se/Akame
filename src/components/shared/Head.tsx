@@ -12,8 +12,8 @@ interface HeadProps {
 const Head: React.FC<HeadProps> = (props) => {
   const {
     title,
-    description = "Akame là một website cho phép bạn tìm kiếm thông tin của các bộ anime",
-    image = "https://res.cloudinary.com/figdom/image/upload/v1653502883/anime/Untitled_g7gczx.png",
+    description = "Kurumi là một website cho phép bạn tìm kiếm thông tin của các bộ anime và manga",
+    image = "https://res.cloudinary.com/figdom/image/upload/v1653982049/269e6b9b-bee3-4cfa-9454-0ff19a86a0de_vswqt6.png",
   } = props;
 
   const { asPath } = useRouter();
@@ -24,6 +24,7 @@ const Head: React.FC<HeadProps> = (props) => {
 
       <meta name="title" content={title} />
       <meta name="description" content={description} />
+      <link rel="shortcut icon" href="/logo.jpeg" />
 
       <meta property="og:type" content="website" />
       <meta property="og:url" content={WEBSITE_URL + asPath} />

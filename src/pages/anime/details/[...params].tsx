@@ -82,7 +82,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
   return (
     <>
       <Head
-        title={`${title} - Akame`}
+        title={`${title} - Kurumi`}
         description={description}
         image={data.bannerImage}
       />

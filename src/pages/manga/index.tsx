@@ -25,7 +25,7 @@ const Manga: NextPage<HomaPage> = ({
    return (
       <div>
          <Head
-            title="Akame - Manga"
+            title="Kurumi - Manga"
          />
          
          <ClientOnly>

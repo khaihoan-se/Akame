@@ -33,7 +33,7 @@ const Home: NextPage<HomaPage> = ({
       <React.Fragment>
 
          <Head
-            title="Akame - Anime"
+            title="Kurumi - Anime"
          />
 
          <ClientOnly>

@@ -65,7 +65,7 @@ const DetailsPage: React.FC<DetailsPageProps> = ({
     return (
         <>
             <Head
-                title={`${title} - Kaguya`}
+                title={`${title} - Kurumi`}
                 description={description}
                 image={data.bannerImage}
             />
