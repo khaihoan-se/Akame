@@ -28,7 +28,7 @@ const SeasonSelector: React.FC<SelectorProps> = ({
     const handleGetItem = (event: any) => {
         setSearchGenres(event.currentTarget.textContent);
         router.query.season = event.currentTarget.textContent;
-        router.query.seasonYear = year.year.toString();
+        router.query.seasonYear = !router.query.seasonYear ? year.year.toString() : router.query.seasonYear;
         router.push(router)
         setOpen(false)
     }
