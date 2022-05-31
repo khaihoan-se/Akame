@@ -3,7 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { firebaseApp } from "@/config/firebase"
 import { useRouter } from 'next/router'
 const login = () => {
-    const router = useRouter()
+    const Router = useRouter()
     const firebaseAuth = getAuth(firebaseApp)
     const provider = new GoogleAuthProvider()
     const handleLogin = async () => {
@@ -11,7 +11,7 @@ const login = () => {
         const { refreshToken, providerData } = user;
         localStorage.setItem('user', JSON.stringify(providerData))
         localStorage.setItem('accessToken', JSON.stringify(refreshToken))
-        router.push('/')
+        Router.push('/')
     }
 
   return (
