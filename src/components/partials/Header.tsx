@@ -26,7 +26,6 @@ const Header: React.FC = () => {
     const [ istop, setIstop ] = useState<boolean>(false);
 
     const [ user, setUser ] = useState<any>({});
-    const [ accessToken, setAccessToken ] = useState(true)
 
     const isActive = (url: string) => {
         if(router.pathname === url) return true
@@ -36,7 +35,7 @@ const Header: React.FC = () => {
         const userInfo = fetchUser();
         setUser(userInfo)
         
-    }, [])
+    }, [user])
 
     useEffect(() => {
         const handleIsTop = () => {
