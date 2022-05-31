@@ -2,10 +2,13 @@ import React from 'react'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { firebaseApp } from "@/config/firebase"
 import { useRouter } from 'next/router'
-const login = () => {
+const Login = () => {
     const Router = useRouter()
+    
     const firebaseAuth = getAuth(firebaseApp)
+
     const provider = new GoogleAuthProvider()
+
     const handleLogin = async () => {
         const { user } =  await signInWithPopup(firebaseAuth, provider)
         const { refreshToken, providerData } = user;
@@ -23,4 +26,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

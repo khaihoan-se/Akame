@@ -1,15 +1,33 @@
-export const userAccessToken = () => {
-    const accessToken: any= localStorage.getItem('accessToken') !== 'undefined' 
-    ? JSON.parse(localStorage.getItem('accessToken') || '{}') 
-    : localStorage.clear();
+// export const userAccessToken = () => {
+//     const accessToken = localStorage.getItem('accessToken') !== 'undefined' 
+//     ? JSON.parse(localStorage.getItem('accessToken') || '{}') 
+//     : localStorage.clear();
 
-    return accessToken
-}
+//     return accessToken
+// }
+
+// export const fetchUser = () => {
+//     const userInfo = localStorage.getItem('user') !== 'undefined' 
+//     ? JSON.parse(localStorage.getItem('user') || '{}') 
+//     : localStorage.clear();
+
+//     return userInfo
+// }
 
 export const fetchUser = () => {
-    const userInfo: any= localStorage.getItem('user') !== 'undefined' 
-    ? JSON.parse(localStorage.getItem('user') || '{}') 
-    : localStorage.clear();
-
-    return userInfo
-}
+    const userInfo =
+      localStorage.getItem("user") !== "undefined"
+        ? JSON.parse(localStorage.getItem("user") || "null")
+        : localStorage.clear();
+  
+    return userInfo;
+  };
+  
+  export const userAccessToken = () => {
+    const accessToken =
+      localStorage.getItem("accessToken") !== "undefined"
+        ? JSON.parse(localStorage.getItem("accessToken") || 'null')
+        : localStorage.clear();
+  
+    return accessToken;
+  };
