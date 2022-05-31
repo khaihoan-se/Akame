@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     
     const [ istop, setIstop ] = useState<boolean>(false);
     const [ open, setOpen ] = useState(false)
-    const [ user, setUser ] = useState<any>({});
+    const [ user, setUser ] = useState<any>(null);
 
     const isActive = (url: string) => {
         if(router.pathname === url) return true
@@ -34,9 +34,8 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         const userInfo = fetchUser();
-        setUser(userInfo)
-        
-    }, [])
+        setUser(userInfo);
+      }, []);
 
     useEffect(() => {
         const handleIsTop = () => {
@@ -48,6 +47,7 @@ const Header: React.FC = () => {
 
     const handleSignOut = () => {
         localStorage.clear()
+        router.push('/')
     }
         
     return (
@@ -94,8 +94,8 @@ const Header: React.FC = () => {
                 </NavItem>
 
                 <div className="flex items-center space-x-2">
-                    {
-                        !user[0]
+                    {/* {
+                        !user
                         ?   <Link href="/login">
                                 <a>
                                     <Button primary className="px-4 py-2 rounded-md">
@@ -125,7 +125,14 @@ const Header: React.FC = () => {
                                         </div>
                             }
                         </div>
-                    }
+                    } */}
+                    <Link href="/login">
+                        <a>
+                            <Button primary className="px-4 py-2 rounded-md">
+                                <p>Login</p>
+                            </Button>
+                        </a>
+                    </Link>
                 </div>
             </div>
         </header>
