@@ -3,6 +3,9 @@ import GenreSelector from '@/components/shared/GenreSelector';
 import React from 'react';
 import { BiSearch } from "react-icons/bi";
 import { RiArrowDownSLine } from "react-icons/ri";
+import YearSelector from '@/components/shared/YearSelector';
+import SeasonSelector from '@/components/shared/SeasonSelector';
+import FormatSelector from '@/components/shared/FormatSelector';
 
 
 interface FormSeachAnimeProps {
@@ -21,6 +24,22 @@ const FormSeachAnime: React.FC<FormSeachAnimeProps> = ({
                         title="Genres" 
                         RightIcon={RiArrowDownSLine}
                     />
+                    <YearSelector 
+                        title="Year"
+                        RightIcon={RiArrowDownSLine}
+                    />
+                    <SeasonSelector 
+                        title="Season"
+                        RightIcon={RiArrowDownSLine}
+                    />
+
+                    <FormatSelector 
+                        title="Format"
+                        RightIcon={RiArrowDownSLine}
+                    />
+                </div>
+                <div className='flex items-end justify-end'>
+                    
                 </div>
             </div>
         </form>

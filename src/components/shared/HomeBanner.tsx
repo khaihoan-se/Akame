@@ -157,7 +157,7 @@ const HomeBanner = <T extends "anime" | "manga">({
           transition={{ ease: transition, duration: 1 }}
         >
           <h1 className="text-2xl font-bold uppercase md:text-4xl line-clamp-2 sm:line-clamp-3 md:line-clamp-4">
-            {activeSlide.title.english}
+            {activeSlide.title.english || activeSlide.title.native}
           </h1>
           <div className="flex flex-wrap items-center mt-4 text-lg gap-x-8">
             {activeSlide.averageScore && (

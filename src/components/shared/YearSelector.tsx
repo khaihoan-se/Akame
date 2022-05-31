@@ -1,4 +1,4 @@
-import { GENRES } from '@/constants/en';
+import { YEAR } from '@/constants/en';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { CgClose } from "react-icons/cg";
@@ -12,7 +12,7 @@ interface SelectorProps {
     RightIcon?: any;
 }
 
-const GenreSelector: React.FC<SelectorProps> = ({
+const YearSelector: React.FC<SelectorProps> = ({
     title,
     RightIcon,
 }) => {
@@ -25,7 +25,7 @@ const GenreSelector: React.FC<SelectorProps> = ({
     }
     const handleGetItem = (event: any) => {
         setSearchGenres(event.currentTarget.textContent);
-        router.query.genres = event.currentTarget.textContent
+        router.query.seasonYear = event.currentTarget.textContent
         router.push(router)
         setOpen(false)
     }
@@ -49,7 +49,7 @@ const GenreSelector: React.FC<SelectorProps> = ({
             </div>
             {open && <div className="no-scroll w-full absolute bg-background-800 z-40 px-4 py-2 max-h-[300px] overflow-hidden overflow-y-auto rounded-md">
                 {
-                    GENRES.map((item: any, index: number) => (
+                    YEAR.map((item: any, index: number) => (
                         <div className='my-2 hover:bg-black py-2 px-4 rounded-md cursor-pointer'
                             key={index}
                             onClick={handleGetItem}
@@ -61,4 +61,4 @@ const GenreSelector: React.FC<SelectorProps> = ({
     );
 }
 
-export default React.memo(GenreSelector);
+export default React.memo(YearSelector);

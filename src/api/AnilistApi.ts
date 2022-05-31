@@ -14,6 +14,7 @@ const query = `query (
       $season: MediaSeason, 
       $sort: [MediaSort],
       $genre: String,
+      $format: MediaFormat,
    ) {
    Page( page: $page, perPage: $perPage ) {
       pageInfo {
@@ -30,7 +31,8 @@ const query = `query (
             seasonYear: $seasonYear, 
             search: $search, 
             id: $id,
-            genre: $genre
+            genre: $genre,
+            format: $format
          ) {
          description
          trailer {

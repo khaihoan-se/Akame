@@ -11,9 +11,8 @@ const Browse: NextPage = () => {
     const [ search, setSearch ] = useState('');
     const [ data, setData ] = useState([])
     const [ loading, setLoading ] = useState<boolean>(false)
-    const [ page, setPage] = useState(1)
+    // const [ page, setPage] = useState(1)
     const router = useRouter();
-    console.log(router.query.sort);
     
     const handleSearch = (e: any) => {
         setSearch(e.target.value)
@@ -38,7 +37,8 @@ const Browse: NextPage = () => {
                     search: search.length === 0 ? null : search,
                     genre: !router.query.genres ? null : router.query.genres,
                     season: !router.query.season ? undefined : router.query.season,
-                    seasonYear: !router.query.seasonYear ? null : router.query.seasonYear,
+                    seasonYear: !router.query.seasonYear ? undefined : router.query.seasonYear,
+                    format: !router.query.format ? undefined : router.query.format
                 })
                 setData(datas.data.Page.media)
                 setLoading(false)
