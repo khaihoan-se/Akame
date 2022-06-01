@@ -1,4 +1,4 @@
-<!-- <div style="text-align: center;">
+<div style="text-align: center;">
 <h1>Kaguya</h1>
 
 [![Kaguya Discord server](https://discordapp.com/api/guilds/906042713688928257/widget.png?style=banner2)](https://discord.gg/382BEFfER6)
@@ -77,4 +77,4 @@ NEXT_PUBLIC_PROXY_SERVER_URL=
 # Public web push key (https://github.com/hoangvu12/kaguya-scraper)
 NEXT_PUBLIC_WEB_PUSH=
 
-``` -->
+```
