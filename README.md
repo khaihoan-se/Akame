@@ -1,80 +1,44 @@
 <div style="text-align: center;">
-<h1>Kaguya</h1>
+<h1>Akame</h1>
 
-[![Kaguya Discord server](https://discordapp.com/api/guilds/906042713688928257/widget.png?style=banner2)](https://discord.gg/382BEFfER6)
-
-### Kaguya is a multi-language website that provides you anime, manga and related resources.
-
-Since it is an open-source project, there won't be any ads in this website.
-
-The official website is [kaguya.live](https://kaguya.live)
+### Akame allows you to search for information about an anime or manga
+ 
+copy the interface of https://kaguya.live/
 
 </div>
 
 ## Table of contents
 
-- [Technologies](#technologies)
-- [Screenshots](#screenshots)
-- [To do](#todo)
-- [Sources](#sources)
+- [Anime](#Anime)
+- [Manga](#Manga)
+- [Search](#Search)
+- [Details](#Details)
+- [Add To Favorites](#addtofavorites)
 
 ## Technologies
 
 - NextJS
 - TailwindCSS
-- Supabase
-- I18n
-- Libraries such as SwiperJS, Framer Motion, React Query...
+- API: Anilist
+- Libraries such as SwiperJS, Framer Motion, React Redux...
 
-## Screenshots
+## Anime
 
-![Home page](https://user-images.githubusercontent.com/68330291/157863755-42d7cf8e-d300-43f5-beff-9e8f2e15de00.png)
+![Anime page](https://res.cloudinary.com/figdom/image/upload/v1653982049/269e6b9b-bee3-4cfa-9454-0ff19a86a0de_vswqt6.png)
 
-![Details page](https://user-images.githubusercontent.com/68330291/157862659-4ecbe0e7-9f5f-463e-80d0-d40828b28c77.png)
+## Manga
 
-![Search page](https://user-images.githubusercontent.com/68330291/157862791-811553da-b799-4629-addf-f3392dca8de4.png)
+![Manga page](https://res.cloudinary.com/figdom/image/upload/v1653982049/269e6b9b-bee3-4cfa-9454-0ff19a86a0de_vswqt6.png)
 
-![Watch page](https://user-images.githubusercontent.com/68330291/157862978-da411ae9-fefb-4c78-beb2-81c503f389d2.png)
+## Search
 
-![Read page](https://user-images.githubusercontent.com/68330291/157863159-08a1f117-e81f-4284-838f-2dc90e1b439f.png)
+![Search page](https://res.cloudinary.com/figdom/image/upload/v1653982049/269e6b9b-bee3-4cfa-9454-0ff19a86a0de_vswqt6.png)
 
-![Character page](https://user-images.githubusercontent.com/68330291/157863295-d1f6e16b-3e4c-4435-87a3-9bd0ef1c74fb.png)
+## Details
 
-![Voice actor page](https://user-images.githubusercontent.com/68330291/157863365-59851e7e-0367-4c6c-b084-564fb8496f80.png)
+![Details page](https://res.cloudinary.com/figdom/image/upload/v1653982049/269e6b9b-bee3-4cfa-9454-0ff19a86a0de_vswqt6.png)
 
-## Todo
+## addtofavorites
 
-- <s>Comments</s> ✔
-- <s>Push Notifications</s> ✔
-- Notifications
-- Forum
-- User profile
+![Add To Favorites](https://res.cloudinary.com/figdom/image/upload/v1653982049/269e6b9b-bee3-4cfa-9454-0ff19a86a0de_vswqt6.png)
 
-## Sources
-
-- Video player design is heavily inspired by [Netflix](https://netflix.com)
-- Reader is heavily inspired by [danke.moe](https://danke.moe)
-- Info from [Anilist](anilist.co)
-
-## Enviroment Variables
-
-```
-# Supabase (See: https://github.com/hoangvu12/kaguya-database)
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_KEY=
-ADMIN_SUPABASE_KEY=
-
-# Google Analytics
-NEXT_PUBLIC_GA_ID=
-
-# See: https://github.com/hoangvu12/kaguya-scraper
-NEXT_PUBLIC_NODE_SERVER_URL=
-NEXT_PUBLIC_SOCKET_SERVER_URL=
-
-# See: https://github.com/hoangvu12/kaguya-proxy
-NEXT_PUBLIC_PROXY_SERVER_URL=
-
-# Public web push key (https://github.com/hoangvu12/kaguya-scraper)
-NEXT_PUBLIC_WEB_PUSH=
-
-```
