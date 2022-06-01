@@ -28,7 +28,7 @@ const ModuleFavorite: React.FC<Props> = ({ data }) => {
         <div className="no-scroll mt-4 max-h-[500px] overflow-auto">
             {
                 data.map((item: any) => (
-                    <Link href={`/anime/details/${item.id}`}>
+                    <Link href={`/anime/details/${item.id}`} key={item.id}>
                         <div className="flex hover:bg-background-600 px-4 py-2 rounded-md cursor-pointer w-full">
                         <div className="relative max-w-[70px] min-w-[70px] h-22">
                             <PlainCard src={item.coverImage.large} className="w-full h-full object-cover rounded-md" />
