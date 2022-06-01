@@ -63,7 +63,7 @@ const Header: React.FC = () => {
             istop && "bg-background"
         )}>
             {/* Logo */}
-            <div className="relative h-10 w-10 mr-6">
+            <div className="relative h-10 w-10 mr-2 md:mr-6">
                 <NavItem href="/">{() => <Logo className="!w-full !h-full" />}</NavItem>
             </div>
             {/* menu */}
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
                 {MENU_LIST.map((menu) => (
                     <Link href={`${menu.path}`} key={menu.path}>
                         <li className={classNames(
-                            "pl-4 text-typography-secondary cursor-pointer hover:text-white",
+                            "md:pl-4 pl-2 text-typography-secondary cursor-pointer hover:text-white",
                             isActive(`${menu.path}`) && "text-primary-300 hover:text-primary-400"
                         )}>{menu.title}</li>
                     </Link>
