@@ -43,10 +43,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
         ?.sort((a, b) => a.episode - b.episode)
         .find((schedule) => dayjs.unix(schedule.airingAt).isAfter(dayjs())),
     [data?.airingSchedule]
-  );
-
-  console.log(data);
-  
+  );  
 
   const nextAiringScheduleTime = useMemo(() => {
     if (!nextAiringSchedule?.airingAt) return null;
