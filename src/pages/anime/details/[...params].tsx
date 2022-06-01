@@ -21,6 +21,7 @@ import List from "@/components/shared/List";
 import CircleButton from "@/components/shared/CircleButton";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import { getDataText } from "@/utils";
+import Button from "@/components/shared/Button";
 
 const bannerVariants = {
     initial: { opacity: 0 },
@@ -173,8 +174,7 @@ const DetailsPage: React.FC<DetailsProps> = ({
               <PlainCard src={data.coverImage.extraLarge} alt={data.coverImage.extraLarge} />
 
               <div className="flex items-center space-x-1">
-                <button>Add to List</button>
-                <button>icons</button>
+                <Button primary className="w-full px-4 py-2 hover:bg-primary-700 rounded-md">Add to List</Button>
               </div>
             </div>
 

@@ -11,6 +11,8 @@ import { fetchUser, userAccessToken } from "@/api/user";
 import Image from "../shared/Image";
 import HeaderProject from "../shared/HeaderProject";
 import { GetStaticProps } from "next";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, removeUser } from "@/redux/actions/userAction";
 
 
 const MENU_LIST = [
@@ -19,24 +21,21 @@ const MENU_LIST = [
 ]
 
 const Header: React.FC = () => {
+    const listUser = useSelector((state: any) => state.user.listUser)
+    const dispatch = useDispatch()
+
     const router = useRouter();
-    
+
     const searchUrl = router.asPath.includes("manga")
     ? "/browse?type=manga"
     : "/browse?type=anime";
     
     const [ istop, setIstop ] = useState<boolean>(false);
     const [ open, setOpen ] = useState(false)
-    const [ user, setUser ] = useState<any>(null);
 
     const isActive = (url: string) => {
         if(router.pathname === url) return true
     }
-
-    useEffect(() => {
-        const userInfo = fetchUser();
-        setUser(userInfo);
-    }, []);
     
     useEffect(() => {
         const handleIsTop = () => {
@@ -45,7 +44,10 @@ const Header: React.FC = () => {
         document.addEventListener('scroll', handleIsTop);
     }, [])
 
+
     const handleSignOut = () => {
+        const action = removeUser(listUser)
+        dispatch(action)
         localStorage.clear()
         router.push('/')
     }
@@ -94,20 +96,19 @@ const Header: React.FC = () => {
                 </NavItem>
 
                 <div className="flex items-center space-x-2">
-                    { user === null 
+                    { listUser.length < 1
                     ? <Link href="/login">
                             <a>
-                                <Button primary className="px-4 py-2 rounded-md">
+                                <Button primary className="px-4 py-2 rounded-md hover:bg-primary-700">
                                     <p>Login</p>
                                 </Button>
                             </a>
                         </Link> 
-                    : <HeaderProject user={user} open={open} setOpen={setOpen} handleSignOut={handleSignOut} />}
+                    : <HeaderProject user={listUser[0]} open={open} setOpen={setOpen} handleSignOut={handleSignOut} />}
                 </div>
             </div>
         </header>
     )
 }
-
 
 export default Header;

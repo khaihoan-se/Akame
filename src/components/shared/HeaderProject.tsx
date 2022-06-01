@@ -13,7 +13,7 @@ const HeaderProject: React.FC<HeaderProjectProps> = ({
     setOpen,
     open,
     handleSignOut,
-}) => {
+}) => {    
     return (
         <div 
             className="relative h-10 w-10 rounded-full cursor-pointer"

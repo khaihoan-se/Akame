@@ -2,7 +2,7 @@ import React from "react";
 import Header from "@/components/partials/Header";
 import Footer from "@/components/partials/Footer";
 import MobileLayout from "./MobileLayout";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import Head from "next/head";
 
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const BaseLayouts: React.FC<Props> = ({ children }) => {
+    const router = useRouter();
     const [ isMobile, setIsMobile ] = React.useState(false)
     
     React.useEffect(() => {
@@ -29,11 +30,11 @@ const BaseLayouts: React.FC<Props> = ({ children }) => {
     return isMobile ? <MobileLayout /> :  
     (
         <main className="scroll-bar">
-            <Header />
+            { router.pathname !== '/login' && <Header />}
 
             <div className="app">{children}</div>
 
-            <Footer />
+            { router.pathname !== '/login' && <Footer />}
         </main>
     ) 
 }
