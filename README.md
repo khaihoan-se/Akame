@@ -21,8 +21,10 @@ copy the interface of https://kaguya.live/
 
 - NextJS
 - TailwindCSS
+- TypeScript
 - API: Anilist
-- Libraries such as SwiperJS, Framer Motion, React Redux...
+- Firebase Auth
+- Libraries such as SwiperJS, Framer Motion, React Redux, React YouTube,...
 
 ## Anime
 
