@@ -27,8 +27,17 @@ const BaseLayouts: React.FC<Props> = ({ children }) => {
         window.addEventListener("resize", handleIsMobile)
     }, [isMobile])
 
-    return isMobile ? <MobileLayout /> :  
-    (
+    // return isMobile ? <MobileLayout /> :  
+    // (
+    //     <main className="scroll-bar">
+    //         { router.pathname !== '/login' && <Header />}
+
+    //         <div className="app">{children}</div>
+
+    //         { router.pathname !== '/login' && <Footer />}
+    //     </main>
+    // ) 
+    return (
         <main className="scroll-bar">
             { router.pathname !== '/login' && <Header />}
 
@@ -36,7 +45,7 @@ const BaseLayouts: React.FC<Props> = ({ children }) => {
 
             { router.pathname !== '/login' && <Footer />}
         </main>
-    ) 
+    )
 }
 
 export default BaseLayouts;

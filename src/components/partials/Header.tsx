@@ -27,8 +27,6 @@ const Header: React.FC = () => {
     const listFavorite = useSelector((state: any) => state.favorite.listFavorite)
 
     const dispatch = useDispatch()
-
-    console.log(listFavorite);
     
     const router = useRouter();
 
@@ -81,9 +79,9 @@ const Header: React.FC = () => {
             </ul>
             {/* tools */}
             <div className="flex items-center">
-                <div>
+                <div className="hidden md:flex">
                     <div className={classNames(
-                        "p-2 flex items-center rounded-3xl bg-background-900 gap-x-1.5 mr-16 cursor-pointer",
+                        "p-2 flex items-center rounded-3xl bg-background-900 gap-x-1.5 mr-6 cursor-pointer",
                         istop && "bg-background-800"
                     )}>
                         <RiGlobalLine className="w-6 h-6" />
@@ -95,19 +93,25 @@ const Header: React.FC = () => {
                     {({ isActive }) => (
                         <AiOutlineSearch
                         className={classNames(
-                            "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300 mr-16",
+                            "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300 mr-6",
                             isActive && "text-primary-300"
                         )}
                         />
                     )}
                 </NavItem>
                 
-                <div className="mr-16 relative cursor-pointer"
+                
+                <div className="mr-6 relative cursor-pointer"
                     onClick={() => setOpenFa(!openFa)}
                 >
                     <div>
                         <MdOutlineFavoriteBorder className="w-7 h-7 font-semibold hover:text-primary-300" />
-                        <div className="absolute top-[-8px] right-[-8px] text-xs bg-primary-600 flex items-center justify-center rounded-full min-w-[20px] min-h-[20px]">{listFavorite.length}</div>
+                        {
+                            listFavorite.length === 0 ? ''
+                            : <div className="absolute top-[-8px] right-[-8px] text-xs bg-primary-600 flex items-center justify-center rounded-full min-w-[20px] min-h-[20px]">
+                                {listFavorite.length}
+                            </div>
+                        }
                     </div>
                     {
                         openFa && <ModuleFavorite data={listFavorite} />

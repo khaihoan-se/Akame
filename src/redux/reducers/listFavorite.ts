@@ -11,6 +11,13 @@ const listFavorite = (state = initialState, action: any) => {
                 listFavorite: newList,
             }
         }
+        case 'REMOVE_FAVORITE': {
+            // const newList = state.listFavorite.filter((item: any) => item.id !== action.payload.id);
+            return {
+                ...state,
+                listFavorite: state.listFavorite.filter((item: any) => item.id !== action.payload)
+            }
+        }
         default:
         return state;
     }

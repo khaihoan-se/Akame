@@ -5,3 +5,10 @@ export const addFavorite = (data: any) => {
     };
 
 }
+
+export const removeFavorite = (data: any) => {
+    return {
+        type: 'REMOVE_FAVORITE',
+        payload: data
+    };
+}
