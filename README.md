@@ -3,6 +3,8 @@
 
 ### Akame allows you to search for information about an anime or manga
  
+Demo: https://akame.vercel.app/
+ 
 copy the interface of https://kaguya.live/
 
 </div>
