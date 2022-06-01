@@ -59,12 +59,12 @@ const Login = () => {
             <h1 className="text-5xl font-bold mb-8">Login</h1>
 
             <Button
-              className="shadow-lg relative bg-white text-black font-bold flex items-center justify-center w-full hover:!bg-opacity-90 mb-2 px-4 py-2 rounded-md"
+              className="shadow-lg relative bg-white text-black font-bold flex items-center w-full hover:!bg-opacity-90 mb-2 px-4 py-2 rounded-md"
               LeftIcon={FcGoogle}
               iconClassName="absolute left-6"
               onClick={handleLogin}
             >
-              <p>login with google</p>
+              <p className='ml-12'>login with google</p>
             </Button>
           </div>
         </div>

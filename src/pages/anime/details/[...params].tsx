@@ -22,6 +22,8 @@ import CircleButton from "@/components/shared/CircleButton";
 import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
 import { getDataText } from "@/utils";
 import Button from "@/components/shared/Button";
+import { useDispatch } from "react-redux";
+import { addFavorite } from "@/redux/actions/favoriteAction";
 
 const bannerVariants = {
     initial: { opacity: 0 },
@@ -34,6 +36,8 @@ interface DetailsProps {
 const DetailsPage: React.FC<DetailsProps> = ({
   animeDetail
 }) => {
+  const dispatch = useDispatch();
+
   const data = animeDetail[0]  
   const title = data?.title.english || data?.title.native
   const description = data?.description
@@ -76,6 +80,11 @@ const DetailsPage: React.FC<DetailsProps> = ({
   useEffect(() => {
     setShowTrailer(false);
   }, [data]);
+
+  const addAnimeFavorite = () => {
+    const action = data;
+    dispatch(addFavorite(action))
+  }
 
   return (
     <>
@@ -171,7 +180,11 @@ const DetailsPage: React.FC<DetailsProps> = ({
               <PlainCard src={data.coverImage.extraLarge} alt={data.coverImage.extraLarge} />
 
               <div className="flex items-center space-x-1">
-                <Button primary className="w-full px-4 py-2 hover:bg-primary-700 rounded-md">Add to List</Button>
+                <Button primary className="w-full px-4 py-2 hover:bg-primary-700 rounded-md"
+                  onClick={addAnimeFavorite}
+                >
+                  Add to List
+                </Button>
               </div>
             </div>
 

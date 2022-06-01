@@ -7,12 +7,14 @@ import { RiGlobalLine } from "react-icons/ri";
 import Button from "../shared/BaseButton";
 import NavItem from "../shared/NavItem";
 import { AiFillFacebook, AiOutlineSearch } from "react-icons/ai";
-import { fetchUser, userAccessToken } from "@/api/user";
 import Image from "../shared/Image";
 import HeaderProject from "../shared/HeaderProject";
 import { GetStaticProps } from "next";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, removeUser } from "@/redux/actions/userAction";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+import ModuleFavorite from "../shared/ModuleFavorite";
+
 
 
 const MENU_LIST = [
@@ -22,8 +24,12 @@ const MENU_LIST = [
 
 const Header: React.FC = () => {
     const listUser = useSelector((state: any) => state.user.listUser)
+    const listFavorite = useSelector((state: any) => state.favorite.listFavorite)
+
     const dispatch = useDispatch()
 
+    console.log(listFavorite);
+    
     const router = useRouter();
 
     const searchUrl = router.asPath.includes("manga")
@@ -31,7 +37,8 @@ const Header: React.FC = () => {
     : "/browse?type=anime";
     
     const [ istop, setIstop ] = useState<boolean>(false);
-    const [ open, setOpen ] = useState(false)
+    const [ open, setOpen ] = useState(false);
+    const [ openFa, setOpenFa ] = useState(false)
 
     const isActive = (url: string) => {
         if(router.pathname === url) return true
@@ -76,7 +83,7 @@ const Header: React.FC = () => {
             <div className="flex items-center">
                 <div>
                     <div className={classNames(
-                        "p-2 flex items-center rounded-3xl bg-background-900 gap-x-1.5 mr-6 cursor-pointer",
+                        "p-2 flex items-center rounded-3xl bg-background-900 gap-x-1.5 mr-16 cursor-pointer",
                         istop && "bg-background-800"
                     )}>
                         <RiGlobalLine className="w-6 h-6" />
@@ -88,12 +95,24 @@ const Header: React.FC = () => {
                     {({ isActive }) => (
                         <AiOutlineSearch
                         className={classNames(
-                            "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300 mr-6",
+                            "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300 mr-16",
                             isActive && "text-primary-300"
                         )}
                         />
                     )}
                 </NavItem>
+                
+                <div className="mr-16 relative cursor-pointer"
+                    onClick={() => setOpenFa(!openFa)}
+                >
+                    <div>
+                        <MdOutlineFavoriteBorder className="w-7 h-7 font-semibold hover:text-primary-300" />
+                        <div className="absolute top-[-8px] right-[-8px] text-xs bg-primary-600 flex items-center justify-center rounded-full min-w-[20px] min-h-[20px]">{listFavorite.length}</div>
+                    </div>
+                    {
+                        openFa && <ModuleFavorite data={listFavorite} />
+                    }
+                </div>
 
                 <div className="flex items-center space-x-2">
                     { listUser.length < 1

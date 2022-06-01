@@ -1,8 +1,8 @@
 // reducers/hobby.js
 const initialState = {
-    listUser: []
-}
-const hobbyReducer = (state = initialState, action: any) => {
+    listUser: [],
+};
+const userReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case 'GET_USER': {
             // const newList = [...state.listUser, action.payload];
@@ -26,4 +26,4 @@ const hobbyReducer = (state = initialState, action: any) => {
         return state;
     }
 };
-export default hobbyReducer;
+export default userReducer;
