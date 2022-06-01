@@ -43,7 +43,7 @@ const Login = () => {
           <div className="relative flex flex-col justify-center items-center w-full h-full z-20">
             <div className="w-full px-8">
               <h1 className="text-4xl font-semibold text-white line-clamp-6">
-                "The people laughing are laughing at their own ignorance."
+                The people laughing are laughing at their own ignorance.
               </h1>
               <p className="text-right text-xl italic mt-4 font-semibold">
                 Sakamoto Yuuji
@@ -66,14 +66,6 @@ const Login = () => {
             >
               <p>login with google</p>
             </Button>
-            {/* <Button
-              className="shadow-lg relative bg-[#2D88FF] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
-              LeftIcon={FaFacebookF}
-              iconClassName="absolute left-6"
-              onClick={handleSignIn("facebook")}
-            >
-              <p>{t("login_with_facebook")}</p>
-            </Button> */}
           </div>
         </div>
       </div>
